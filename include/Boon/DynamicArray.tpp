@@ -171,4 +171,11 @@ namespace Boon {
 		// Return an iterator to our new value
 		return Iterator{data + index};
 	}
+
+	template<class T>
+	void DynamicArray<T>::clear() {
+		delete[] data;
+		size = 0;
+		data = new T[capacity];
+	}
 }

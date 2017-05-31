@@ -100,7 +100,7 @@ namespace Boon {
 			// void popBack(); // TODO: make this use erase?
 			// void erase(size_t index); // Just make this use start with end = start for simplicity and consitency
 			// void erase(size_t start, size_t end);
-			// void clear(); // TODO: should not modify capacity to keep parity with std::vector
+			void clear();
 			// void shrinkToFit(); // TODO: Changes capacity to size
 			
 			/**
