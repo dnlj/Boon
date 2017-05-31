@@ -114,7 +114,12 @@ namespace Boon {
 			 * @return The capacity of the Boon::DynamicArray.
 			 */
 			size_t getCapacity() const;
-			//bool isEmpty() const;
+			
+			/**
+			 * @brief Checks if the Boon::DynamicArray is empty.
+			 * @return True if the array is empty otherwise false.
+			 */
+			bool isEmpty() const;
 			
 			// T& getFront(); // TODO: inline?
 			// cosnt T& getFront() const; // TODO: inline?

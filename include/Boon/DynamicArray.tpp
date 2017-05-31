@@ -135,6 +135,11 @@ namespace Boon {
 	}
 
 	template<class T>
+	inline bool DynamicArray<T>::isEmpty() const {
+		return size == 0;
+	}
+
+	template<class T>
 	inline T& DynamicArray<T>::operator[](size_t index) {
 		return data[index];
 	}
