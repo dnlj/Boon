@@ -1,0 +1,1 @@
+// Test would redundant with Boon::DynamicArray::setSize
