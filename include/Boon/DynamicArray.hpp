@@ -128,7 +128,7 @@ namespace Boon {
 			 */
 			bool isEmpty() const;
 			
-			// T& getFront(); // TODO: inline?
+			T& getFront();
 			// cosnt T& getFront() const; // TODO: inline?
 			// T& getBack(); // TODO: inline?
 			// cosnt T& getBack() const; // TODO: inline?
@@ -138,7 +138,6 @@ namespace Boon {
 			// const T* getData() const; // TODO: inline?
 
 			// TODO: begin/end begin_reverse/end_reverse begin_const/end_const begin_reverse_const/end_reverse_const
-
 
 			/**
 			 * @brief Gets a reference to the value at @p index.
@@ -154,7 +153,6 @@ namespace Boon {
 			 */
 			const T& operator[](size_t index) const; // TODO: noexcept?
 			
-
 			/**
 			 * @brief swaps @p first and @p second.
 			 * @tparam U The type contained in the Boon::DynamicArray.
