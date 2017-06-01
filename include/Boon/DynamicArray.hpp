@@ -39,7 +39,7 @@ namespace Boon {
 			DynamicArray(DynamicArray<T>&& other);
 
 			/**
-			 * @brief Deconstructs the Boon::DynamicArray.
+			 * @brief Deconstructs a Boon::DynamicArray.
 			 */
 			~DynamicArray();
 
@@ -92,6 +92,7 @@ namespace Boon {
 			 * @return A iterator to the inserted value.
 			 */
 			Iterator insert(size_t index, T value);
+			
 			// Iterator insert(Iterator it, T value);
 			// Iterator insert(size_t index, size_t count, T value);
 			// Iterator insert(Iterator it, size_t count, T value);
@@ -100,7 +101,13 @@ namespace Boon {
 			// void popBack(); // TODO: make this use erase?
 			// void erase(size_t index); // Just make this use start with end = start for simplicity and consitency
 			// void erase(size_t start, size_t end);
+			
+			/**
+			 * @brief Clears the Boon::DynamicArray
+			 * @return void
+			 */
 			void clear();
+			
 			// void shrinkToFit(); // TODO: Changes capacity to size
 			
 			/**
