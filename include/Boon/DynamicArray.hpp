@@ -129,9 +129,10 @@ namespace Boon {
 			bool isEmpty() const;
 			
 			T& getFront();
-			// cosnt T& getFront() const; // TODO: inline?
+
+			const T& getFront() const;
 			// T& getBack(); // TODO: inline?
-			// cosnt T& getBack() const; // TODO: inline?
+			// const T& getBack() const; // TODO: inline?
 			// T& getAt(size_t index);
 			// const T& getAt(size_t index) const;
 			// T* getData(); // TODO: inline?
