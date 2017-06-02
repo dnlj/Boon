@@ -45,14 +45,14 @@ namespace Boon {
 
 			/**
 			 * @brief Copies the elements from @p other.
-			 * @param[in] The array to copy the elements from.
+			 * @param[in] other The array to copy the elements from.
 			 * @return The array that the elements from @p other were copied to.
 			 */
 			DynamicArray<T>& operator=(const DynamicArray<T>& other);
 
 			/**
 			 * @brief Moves the elements from @p other.
-			 * @param[in] The array to move the elements from.
+			 * @param[in] other The array to move the elements from.
 			 * @return The array that the elements from @p other were moved to.
 			 */
 			DynamicArray<T>& operator=(DynamicArray<T>&& other);
@@ -128,9 +128,18 @@ namespace Boon {
 			 */
 			bool isEmpty() const;
 			
+			/**
+			 * @brief Gets the first element in the Boon::DynamicArray.
+			 * @return The first element in the Boon::DynamicArray
+			 */
 			T& getFront();
 
+			/**
+			 * @brief Gets the first element in the Boon::DynamicArray.
+			 * @return The first element in the Boon::DynamicArray
+			 */
 			const T& getFront() const;
+
 			// T& getBack(); // TODO: inline?
 			// const T& getBack() const; // TODO: inline?
 			// T& getAt(size_t index);
