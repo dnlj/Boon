@@ -92,6 +92,16 @@ namespace Boon {
 	}
 
 	template<class T>
+	inline T& DynamicArray<T>::operator[](size_t index) {
+		return data[index];
+	}
+
+	template<class T>
+	inline const T& DynamicArray<T>::operator[](size_t index) const {
+		return data[index];
+	}
+
+	template<class T>
 	void DynamicArray<T>::reserveCapacity(size_t capacity) {
 		// Check to see if the array need to be resized
 		if (this->capacity >= capacity) { return; }
@@ -122,6 +132,36 @@ namespace Boon {
 		
 		// Update size
 		this->size = size;
+	}
+
+	template<class T>
+	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, T value) {
+		// Make sure index is valid
+		if (index > size) {
+			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::getSize()");
+		}
+
+		// Reserver the additional capacity
+		reserveCapacity(size + 1);
+
+		// Shift values
+		for (size_t i = size; i > index; --i) {
+			data[i] = data[i - 1];
+		}
+
+		// Insert our new value
+		data[index] = std::move(value);
+		++size;
+
+		// Return an iterator to our new value
+		return Iterator{data + index};
+	}
+
+	template<class T>
+	void DynamicArray<T>::clear() {
+		delete[] data;
+		size = 0;
+		data = new T[capacity];
 	}
 	
 	template<class T>
@@ -209,45 +249,5 @@ namespace Boon {
 	template<class T>
 	inline const T* DynamicArray<T>::getData() const {
 		return data;
-	}
-
-	template<class T>
-	inline T& DynamicArray<T>::operator[](size_t index) {
-		return data[index];
-	}
-
-	template<class T>
-	inline const T& DynamicArray<T>::operator[](size_t index) const {
-		return data[index];
-	}
-
-	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, T value) {
-		// Make sure index is valid
-		if (index > size) {
-			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::getSize()");
-		}
-
-		// Reserver the additional capacity
-		reserveCapacity(size + 1);
-
-		// Shift values
-		for (size_t i = size; i > index; --i) {
-			data[i] = data[i - 1];
-		}
-
-		// Insert our new value
-		data[index] = std::move(value);
-		++size;
-
-		// Return an iterator to our new value
-		return Iterator{data + index};
-	}
-
-	template<class T>
-	void DynamicArray<T>::clear() {
-		delete[] data;
-		size = 0;
-		data = new T[capacity];
 	}
 }
