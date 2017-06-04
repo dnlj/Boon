@@ -89,6 +89,7 @@ namespace Boon {
 			 * @brief Inserts the value @p value into the index @p index.
 			 * @param[in] index The index to insert @p value into.
 			 * @param[in] value The value to insert at @p index.
+			 * @throws std::out_of_range When @p index is larger than the size of the array.
 			 * @return A iterator to the inserted value.
 			 */
 			Iterator insert(size_t index, T value);
@@ -131,49 +132,42 @@ namespace Boon {
 			/**
 			 * @brief Gets the first element in the Boon::DynamicArray.
 			 * @return The first element in the Boon::DynamicArray
+			 * @throws std::out_of_range When called on an empty array.
 			 */
 			T& getFront();
 
-			/**
-			 * @brief Gets the first element in the Boon::DynamicArray.
-			 * @return The first element in the Boon::DynamicArray
-			 */
+			/** @copydoc Boon::DynamicArray::getFront */
 			const T& getFront() const;
 
 			/**
 			 * @brief Gets the last element in the Boon::DynamicArray.
 			 * @return The last element in the Boon::DynamicArray
+			 * @throws std::out_of_range When called on an empty array.
 			 */
 			T& getBack();
 
-			/**
-			 * @brief Gets the last element in the Boon::DynamicArray.
-			 * @return The last element in the Boon::DynamicArray
-			 */
+			/** @copydoc Boon::DynamicArray::getBack */
 			const T& getBack() const;
 			
 			/**
 			 * @brief Gets the element at @p index in the Boon::DynamicArray.
+			 * @param[in] index The index to get the element at.
 			 * @return The element at @p index in the Boon::DynamicArray.
+			 * @throws std::out_of_range When called on an empty array. 
+			 * @throws std::out_of_range When @p index is greater than or equal to the size of the array.
 			 */
 			T& getAt(size_t index);
 
-			/**
-			 * @brief Gets the element at @p index in the Boon::DynamicArray.
-			 * @return The element at @p index in the Boon::DynamicArray.
-			 */
+			/** @copydoc Boon::DynamicArray::getAt */
 			const T& getAt(size_t index) const;
 
 			/**
 			 * @brief Gets a pointer to the internal array.
-			 * @return a pointer to the internal array.
+			 * @return A pointer to the internal array.
 			 */
 			T* getData();
 
-			/**
-			 * @brief Gets a pointer to the internal array.
-			 * @return a pointer to the internal array.
-			 */
+			/** @copydoc Boon::DynamicArray::getData */
 			const T* getData() const;
 
 			// TODO: begin/end begin_reverse/end_reverse begin_const/end_const begin_reverse_const/end_reverse_const
@@ -185,11 +179,7 @@ namespace Boon {
 			 */
 			T& operator[](size_t index); // TODO: noexcept?
 			
-			/**
-			 * @brief Gets a reference to the value at @p index.
-			 * @param[in] index The index to get the reference to.
-			 * @return A reference to the value at @p index.
-			 */
+			/** @copydoc Boon::DynamicArray::operator[] */
 			const T& operator[](size_t index) const; // TODO: noexcept?
 			
 			/**
