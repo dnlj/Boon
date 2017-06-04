@@ -167,6 +167,15 @@ namespace Boon {
 	}
 
 	template<class T>
+	const T& DynamicArray<T>::getBack() const {
+		if (isEmpty()) {
+			throw std::out_of_range("Boon::DynamicArray<T>::getBack was called on an empty array.");
+		}
+
+		return data[size - 1];
+	}
+
+	template<class T>
 	inline T& DynamicArray<T>::operator[](size_t index) {
 		return data[index];
 	}
