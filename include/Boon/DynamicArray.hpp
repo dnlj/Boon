@@ -140,7 +140,12 @@ namespace Boon {
 			 */
 			const T& getFront() const;
 
-			// T& getBack(); // TODO: inline?
+			/**
+			* @brief Gets the last element in the Boon::DynamicArray.
+			* @return The last element in the Boon::DynamicArray
+			*/
+			T& getBack();
+
 			// const T& getBack() const; // TODO: inline?
 			// T& getAt(size_t index);
 			// const T& getAt(size_t index) const;
