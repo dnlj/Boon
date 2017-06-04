@@ -164,7 +164,12 @@ namespace Boon {
 			 */
 			const T& getAt(size_t index) const;
 
-			// T* getData(); // TODO: inline?
+			/**
+			 * @brief Gets a pointer to the internal array.
+			 * @return a pointer to the internal array.
+			 */
+			T* getData();
+
 			// const T* getData() const; // TODO: inline?
 
 			// TODO: begin/end begin_reverse/end_reverse begin_const/end_const begin_reverse_const/end_reverse_const

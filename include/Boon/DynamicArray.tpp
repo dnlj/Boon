@@ -202,6 +202,11 @@ namespace Boon {
 	}
 
 	template<class T>
+	inline T* DynamicArray<T>::getData() {
+		return data;
+	}
+
+	template<class T>
 	inline T& DynamicArray<T>::operator[](size_t index) {
 		return data[index];
 	}
