@@ -163,6 +163,15 @@ namespace Boon {
 		size = 0;
 		data = new T[capacity];
 	}
+
+	template<class T>
+	void DynamicArray<T>::shrinkToFit() {
+		T* newData = new T[size];
+		Boon::copy(data, data + size, newData);
+		delete[] data;
+		data = newData;
+		capacity = size;
+	}
 	
 	template<class T>
 	inline size_t DynamicArray<T>::getSize() const {

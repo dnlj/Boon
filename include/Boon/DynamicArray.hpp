@@ -114,12 +114,16 @@ namespace Boon {
 			// void erase(size_t start, size_t end);
 			
 			/**
-			 * @brief Clears the Boon::DynamicArray
+			 * @brief Clears the Boon::DynamicArray.
 			 * @return void
 			 */
 			void clear();
 			
-			// void shrinkToFit(); // TODO: Changes capacity to size
+			/**
+			 * @brief Shrinks capacity to size.
+			 * @return void
+			 */
+			void shrinkToFit();
 			
 			/**
 			 * @brief Gets the size of the Boon::DynamicArray.
