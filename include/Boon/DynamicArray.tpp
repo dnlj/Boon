@@ -176,6 +176,19 @@ namespace Boon {
 	}
 
 	template<class T>
+	T& DynamicArray<T>::getAt(size_t index) {
+		if (isEmpty()) {
+			throw std::out_of_range("Boon::DynamicArray<T>::getAt was called on an empty array.");
+		}
+
+		if (index >= size) {
+			throw std::out_of_range("Boon::DynamicArray<T>::getAt was called with an out of range index.");
+		}
+
+		return data[index];
+	}
+
+	template<class T>
 	inline T& DynamicArray<T>::operator[](size_t index) {
 		return data[index];
 	}

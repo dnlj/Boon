@@ -151,8 +151,13 @@ namespace Boon {
 			 * @return The last element in the Boon::DynamicArray
 			 */
 			const T& getBack() const;
+			
+			/**
+			 * @brief Gets the element at @p index in the Boon::DynamicArray.
+			 * @return The element at @p index in the Boon::DynamicArray.
+			 */
+			T& getAt(size_t index);
 
-			// T& getAt(size_t index);
 			// const T& getAt(size_t index) const;
 			// T* getData(); // TODO: inline?
 			// const T* getData() const; // TODO: inline?
