@@ -158,7 +158,12 @@ namespace Boon {
 			 */
 			T& getAt(size_t index);
 
-			// const T& getAt(size_t index) const;
+			/**
+			 * @brief Gets the element at @p index in the Boon::DynamicArray.
+			 * @return The element at @p index in the Boon::DynamicArray.
+			 */
+			const T& getAt(size_t index) const;
+
 			// T* getData(); // TODO: inline?
 			// const T* getData() const; // TODO: inline?
 
