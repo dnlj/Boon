@@ -170,7 +170,11 @@ namespace Boon {
 			 */
 			T* getData();
 
-			// const T* getData() const; // TODO: inline?
+			/**
+			 * @brief Gets a pointer to the internal array.
+			 * @return a pointer to the internal array.
+			 */
+			const T* getData() const;
 
 			// TODO: begin/end begin_reverse/end_reverse begin_const/end_const begin_reverse_const/end_reverse_const
 
