@@ -6,6 +6,7 @@
 * Finish implementing DynamicArray(See DynamicArray.hpp)
 * Add emplace equivalent for DynamicArray
 * Add range based for loop support to DynamicArray (I think this is just begin/end)
+* Add IsIterator equivalent for input, output, forward, bidirectional, and random access iterators
 
 # Maintenance
 * Setup git
