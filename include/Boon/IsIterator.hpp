@@ -3,10 +3,8 @@
 // STD
 #include <type_traits>
 
-namespace {
-	template<class>
-	class PassThrough { public: using Type = void; };
-}
+// Boon
+#include <Boon/Meta/VoidType.hpp>
 
 namespace Boon {
 	/**
@@ -20,7 +18,7 @@ namespace Boon {
 
 	/** @copydoc Boon::IsIterator */
 	template<class T>
-	class IsIterator<T, typename PassThrough<
+	class IsIterator<T, typename Boon::Meta::VoidType<
 		decltype(
 			// Check for operator*
 			std::declval<T>().operator*(),
