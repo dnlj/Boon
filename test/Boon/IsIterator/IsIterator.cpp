@@ -92,7 +92,7 @@ TEST_CASE("IsIterator", "[IsIterator]") {
 
 	GIVEN("an non-iterator type (wrong return type operator++)") {
 		class NonIt : public It {
-			public: NonIt& operator++() = delete;
+			public: float& operator++();
 		};
 
 		THEN("then value is defined to false") {
