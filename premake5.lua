@@ -71,7 +71,6 @@ workspace(PROJECT_NAME .."Workspace")
 		defines {"NDEBUG", "RELEASE"}
 
 project(PROJECT_NAME)
-	kind "None"
 	files {
 		"./TODO.md",
 		"./include/**.h",
