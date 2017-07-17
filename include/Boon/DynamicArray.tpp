@@ -12,6 +12,148 @@ namespace Boon {
 	}
 }
 
+// Boon::DynamicArray::IteratorBase
+namespace Boon {
+	template<class T>
+	template<bool IsConst>
+	DynamicArray<T>::IteratorBase<IsConst>::IteratorBase() {
+	}
+
+	template<class T>
+	template<bool IsConst>
+	DynamicArray<T>::IteratorBase<IsConst>::IteratorBase(const IteratorBase& other) :
+		ptr{other.ptr} {
+	}
+
+	template<class T>
+	template<bool IsConst>
+	DynamicArray<T>::IteratorBase<IsConst>::IteratorBase(pointer ptr) :
+		ptr{ptr} {
+	}
+
+	template<class T>
+	template<bool IsConst>
+	DynamicArray<T>::IteratorBase<IsConst>& DynamicArray<T>::IteratorBase<IsConst>::operator=(IteratorBase other) {
+		swap(*this, other);
+	}
+
+	template<class T>
+	template<bool IsConst>
+	typename DynamicArray<T>::IteratorBase<IsConst>::reference DynamicArray<T>::IteratorBase<IsConst>::operator*() {
+		return *ptr;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	typename DynamicArray<T>::IteratorBase<IsConst>::const_reference DynamicArray<T>::IteratorBase<IsConst>::operator*() const {
+		return *ptr;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	DynamicArray<T>::IteratorBase<IsConst>& DynamicArray<T>::IteratorBase<IsConst>::operator++() {
+		++ptr;
+		return *this;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	DynamicArray<T>::IteratorBase<IsConst> DynamicArray<T>::IteratorBase<IsConst>::operator++(int) {
+		auto temp{*this};
+		++(*this);
+		return temp;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	DynamicArray<T>::IteratorBase<IsConst>& DynamicArray<T>::IteratorBase<IsConst>::operator--() {
+		--ptr;
+		return *this;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	DynamicArray<T>::IteratorBase<IsConst> DynamicArray<T>::IteratorBase<IsConst>::operator--(int) {
+		auto temp{*this};
+		--(*this);
+		return temp;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	DynamicArray<T>::IteratorBase<IsConst>& DynamicArray<T>::IteratorBase<IsConst>::operator+=(difference_type other) {
+		ptr += other;
+		return *this;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	DynamicArray<T>::IteratorBase<IsConst>& DynamicArray<T>::IteratorBase<IsConst>::operator-=(difference_type other) {
+		ptr -= other;
+		return *this;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	bool DynamicArray<T>::IteratorBase<IsConst>::operator==(const IteratorBase& other) const {
+		return ptr == other.ptr;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	bool DynamicArray<T>::IteratorBase<IsConst>::operator!=(const IteratorBase& other) const {
+		return !(*this == other);
+	}
+
+	template<class T>
+	template<bool IsConst>
+	typename DynamicArray<T>::IteratorBase<IsConst>::pointer DynamicArray<T>::IteratorBase<IsConst>::operator->() {
+		return ptr;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	typename DynamicArray<T>::IteratorBase<IsConst>::const_pointer DynamicArray<T>::IteratorBase<IsConst>::operator->() const {
+		return ptr;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	typename DynamicArray<T>::IteratorBase<IsConst>::reference DynamicArray<T>::IteratorBase<IsConst>::operator[](difference_type offset) {
+		return ptr[offset];
+	}
+
+	template<class T>
+	template<bool IsConst>
+	typename DynamicArray<T>::IteratorBase<IsConst>::const_reference DynamicArray<T>::IteratorBase<IsConst>::operator[](difference_type offset) const {
+		return ptr[offset];
+	}
+
+	template<class T>
+	template<bool IsConst>
+	bool DynamicArray<T>::IteratorBase<IsConst>::operator<(const IteratorBase& other) const {
+		return ptr < other.ptr;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	bool DynamicArray<T>::IteratorBase<IsConst>::operator>(const IteratorBase& other) const {
+		return ptr > other.ptr;
+	}
+
+	template<class T>
+	template<bool IsConst>
+	bool DynamicArray<T>::IteratorBase<IsConst>::operator>=(const IteratorBase& other) const {
+		return !(*this < other);
+	}
+
+	template<class T>
+	template<bool IsConst>
+	bool DynamicArray<T>::IteratorBase<IsConst>::operator<=(const IteratorBase& other) const {
+		return !(*this > other);
+	}
+}
+
 // Boon::DynamicArray
 namespace Boon {
 	template<class T>

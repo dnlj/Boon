@@ -13,6 +13,7 @@
 * Create a readme
 * Document DynamicArray
 * Get TODO comments out of code
+* Change DynamicArray to use DynamicArray when referencing itself instead of DynamicArray\<T>
 
 # Containers
 - [ ] DynamicArray

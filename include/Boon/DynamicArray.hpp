@@ -4,8 +4,201 @@
 namespace Boon {
 	template<class T>
 	class DynamicArray {
+		private:
+			/**
+			 * @brief Used to iterator over the elements in a DynamicArray.
+			 */
+			template<bool IsConst>
+			class IteratorBase {
+				public:
+					using difference_type = ptrdiff_t;
+					using value_type = std::conditional_t<IsConst, const T, T>;
+					using pointer = value_type*;
+					using const_pointer = const value_type*;
+					using reference = value_type&;
+					using const_reference = const value_type&;
+					using iterator_category = std::random_access_iterator_tag;
+
+					/**
+					 * @brief Constructs an IteratorBase.
+					 */
+					IteratorBase();
+
+					/**
+					 * @brief Creates a copy from @p other.
+					 * @param[in] other The IteratorBase to copy.
+					 */
+					IteratorBase(const IteratorBase& other);
+
+					/**
+					 * @brief Constructs an IteratorBase from @p ptr.
+					 * @param[in] ptr The pointer to represent.
+					 */
+					IteratorBase(pointer ptr);
+
+					/**
+					 * @brief Assigns the value of @p other to this.
+					 * @param[in] other The value to assign to this.
+					 * @return An reference to this.
+					 */
+					IteratorBase& operator=(IteratorBase other);
+
+					/**
+					 * @brief Gets a reference to the value represented by this iterator. 
+					 * @return A reference to the value represented by this iterator.
+					 */
+					reference operator*();
+
+					/** @copydoc Boon::DynamicArray::IteratorBase::operator* */
+					const_reference operator*() const;
+
+					/**
+					 * @brief Increments the IteratorBase.
+					 * @return The IteratorBase.
+					 */
+					IteratorBase& operator++();
+
+					/** @copydoc Boon::DynamicArray::IteratorBase::operator++ */
+					IteratorBase operator++(int);
+
+					/**
+					 * @brief Decrements the IteratorBase.
+					 * @return The IteratorBase.
+					 */
+					IteratorBase& operator--();
+
+					/** @copydoc Boon::DynamicArray::IteratorBase::operator-- */
+					IteratorBase operator--(int);
+
+					/**
+					 * @brief Increments the IteratorBase by @p other.
+					 * @param[in] other The amount to increment by.
+					 * @return The IteratorBase.
+					 */
+					IteratorBase& operator+=(difference_type other);
+
+					/**
+					 * @brief Decrements the IteratorBase by @p other.
+					 * @param[in] other The amount to decrement by.
+					 * @return The IteratorBase.
+					 */
+					IteratorBase& operator-=(difference_type other);
+
+					/**
+					 * @brief Checks for equality between two iterators.
+					 * @param[in] other The iterator to check for equality with.
+					 * @return True if equal otherwise false.
+					 */
+					bool operator==(const IteratorBase& other) const;
+
+					/**
+					 * @brief Checks for inequality between two iterators.
+					 * @param[in] other The iterator to check for inequality with.
+					 * @return True if inequal otherwise false.
+					 */
+					bool operator!=(const IteratorBase& other) const;
+
+					/**
+					 * @brief Used to accesses a member of the value represented by this iterator.
+					 * @return A pointer to the value represented by this iterator.
+					 */
+					pointer operator->();
+
+					/** @copydoc Boon::DynamicArray::IteratorBase::operator-> */
+					const_pointer operator->() const;
+
+					/**
+					 * @brief Gets a reference to the value @p offset away from the value represented by this iterator.
+					 * @param[in] offset The offset to use.
+					 * @return A reference to the value @p offset away from the value represented by this iterator.
+					 */
+					reference operator[](difference_type offset);
+
+					/** @copydoc Boon::DynamicArray::IteratorBase::operator[] */
+					const_reference operator[](difference_type offset) const;
+
+					/**
+					 * @brief Checks if this iterator is less than @p other.
+					 * @return True if this iterator is less than @p other; otherwise false.
+					 */
+					bool operator<(const IteratorBase& other) const;
+
+					/**
+					 * @brief Checks if this iterator is greater than @p other.
+					 * @return True if this iterator is greater than @p other; otherwise false.
+					 */
+					bool operator>(const IteratorBase& other) const;
+
+					/**
+					 * @brief Checks if this iterator is greater than or equal to @p other.
+					 * @return True if this iterator is greater than or equal to @p other; otherwise false.
+					 */
+					bool operator>=(const IteratorBase& other) const;
+
+					/**
+					 * @brief Checks if this iterator is less than or equal to @p other.
+					 * @return True if this iterator is less than or equal to @p other; otherwise false.
+					 */
+					bool operator<=(const IteratorBase& other) const;
+
+					/**
+					 * @brief Swaps two iterators.
+					 * @param[in] first The iterator to swap with @p second.
+					 * @param[in] first The iterator to swap with @p first.
+					 */
+					friend void swap(IteratorBase& first, IteratorBase& second) noexcept {
+						using std::swap;
+						swap(first.ptr, second.ptr);
+					}
+
+					/**
+					 * @brief Creates an iterator @p offset away from @p it.
+					 * @param[in] it The iterator to add @p offset to.
+					 * @param[in] offset How far from @p it to create the new iterator.
+					 * @return An iterator @p offset away from @p it.
+					 */
+					friend IteratorBase operator+(IteratorBase it, difference_type offset) {
+						return it += offset;
+					}
+
+					/**
+					 * @brief Creates an iterator @p offset away from @p it.
+					 * @param[in] it The iterator to add @p offset to.
+					 * @param[in] offset How far from @p it to create the new iterator.
+					 * @return An iterator @p offset away from @p it.
+					 */
+					friend IteratorBase operator+(difference_type offset, IteratorBase it) {
+						return it + offset;
+					}
+
+					/**
+					 * @brief Creates an iterator @p -offset away from @p it.
+					 * @param[in] it The iterator to subtract @p offset from.
+					 * @param[in] offset How far from @p it to create the new iterator.
+					 * @return An iterator @p -offset away from @p it.
+					 */
+					friend IteratorBase operator-(IteratorBase it, difference_type offset) {
+						return it -= offset;
+					}
+
+					/**
+					 * @brief Gets the distance between @p first and @p second.
+					 * @param[in] first The first iterator.
+					 * @param[in] second The second iterator.
+					 * @return The distance between @p first and @p second.
+					 */
+					friend difference_type operator-(IteratorBase first, IteratorBase second) {
+						return first.ptr - second.ptr;
+					}
+
+				private:
+					/** The internal pointer manipulated by this iterator. */
+					pointer ptr = nullptr;
+			};
+
 		public:
-			using Iterator = T*; // TODO: implement proper iterators
+			using Iterator = IteratorBase<false>;
+			using ConstIterator = IteratorBase<true>;
 
 			/**
 			 * @brief Constructs a Boon::DynamicArray.
@@ -205,7 +398,7 @@ namespace Boon {
 
 			/** The internal array */
 			T* data = nullptr;
-	};
+		};
 }
 
 #include <Boon/DynamicArray.tpp>

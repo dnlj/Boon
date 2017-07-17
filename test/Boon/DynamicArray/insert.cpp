@@ -12,7 +12,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 		Boon::DynamicArray<int> arr;
 
 		WHEN("an item is inserted at the beginning/end") {
-			const int* it = arr.insert(0, value);
+			const auto it = arr.insert(0, value);
 
 			THEN("the returned value of the iterator is equal to the value inserted") {
 				REQUIRE(*it == value);
