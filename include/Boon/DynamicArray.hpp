@@ -1,7 +1,9 @@
 #pragma once
 
-// TODO: Document
 namespace Boon {
+	/**
+	 * @brief A resizable array similar to std::vector.
+	 */
 	template<class T>
 	class DynamicArray {
 		private:
@@ -263,14 +265,14 @@ namespace Boon {
 			bool operator!=(const DynamicArray<T>& other) const;
 
 			/**
-			* @brief Gets a reference to the value at @p index.
-			* @param[in] index The index to get the reference to.
-			* @return A reference to the value at @p index.
-			*/
-			T& operator[](size_t index); // TODO: noexcept?
+			 * @brief Gets a reference to the value at @p index.
+			 * @param[in] index The index to get the reference to.
+			 * @return A reference to the value at @p index.
+			 */
+			T& operator[](size_t index);
 
 			/** @copydoc Boon::DynamicArray::operator[] */
-			const T& operator[](size_t index) const; // TODO: noexcept?
+			const T& operator[](size_t index) const;
 
 			/**
 			 * @brief Makes sure that enough memory is reserved to store atleast @p capacity items.
