@@ -321,6 +321,15 @@ namespace Boon {
 			Iterator insert(Iterator it, const T& value);
 
 			/**
+			 * @brief Moves the value @p value before @p it.
+			 * @param[in] it The iterator to insert @p value before.
+			 * @param[in] value The value move.
+			 * @throws std::out_of_range When @p index is larger than the size of the array.
+			 * @return A iterator to the inserted value.
+			 */
+			Iterator insert(Iterator it, T&& value);
+
+			/**
 			 * @brief Inserts @p count copies of @p value at the index @p index.
 			 * @param[in] index The index to insert at.
 			 * @param[in] count The number of values to insert.
