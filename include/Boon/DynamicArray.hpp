@@ -299,14 +299,16 @@ namespace Boon {
 			 */
 			Iterator insert(size_t index, T value);
 			
-			// Iterator insert(Iterator it, T value);
-			// Iterator insert(size_t index, size_t count, T value);
-			// Iterator insert(Iterator it, size_t count, T value);
-			// Iterator pushBack(T value); // TODO: make this use insert?
+			/* TODO: 
+			Iterator insert(Iterator it, T value);
+			Iterator insert(size_t index, size_t count, T value);
+			Iterator insert(Iterator it, size_t count, T value);
+			Iterator pushBack(T value); // TODO: make this use insert?
 
-			// void popBack(); // TODO: make this use erase?
-			// void erase(size_t index); // Just make this use start with end = start for simplicity and consitency
-			// void erase(size_t start, size_t end);
+			void popBack(); // TODO: make this use erase?
+			void erase(size_t index); // Just make this use start with end = start for simplicity and consitency
+			void erase(size_t start, size_t end);
+			*/
 			
 			/**
 			 * @brief Clears the Boon::DynamicArray.
@@ -379,7 +381,33 @@ namespace Boon {
 			/** @copydoc Boon::DynamicArray::getData */
 			const T* getData() const;
 
-			// TODO: begin/end begin_reverse/end_reverse begin_const/end_const begin_reverse_const/end_reverse_const
+			/**
+			 * @brief Gets an iterator to the first element in the array.
+			 * @return An iterator to the first element in the array.
+			 */
+			Iterator begin();
+
+			/**
+			 * @brief Gets an iterator to one past the last element in the array.
+			 * @return An iterator to one past the last element in the array.
+			 */
+			Iterator end();
+
+			/* TODO:
+			ConstIterator begin() const;
+			ConstIterator cbegin() const;
+
+			ConstIterator end() const;
+			ConstIterator cend() const;
+
+			... rbegin();
+			... rbegin() const;
+			... crbegin() const;
+
+			... rend();
+			... rend() const;
+			... crend() const;
+			*/
 
 			/**
 			 * @brief swaps @p first and @p second.

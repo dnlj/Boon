@@ -14,6 +14,7 @@
 * Document DynamicArray
 * Get TODO comments out of code
 * Change DynamicArray to use DynamicArray when referencing itself instead of DynamicArray\<T>
+* Change DynamicArray member functions to use the same names as std containers? For compatibility with std\::begin, std\::size etc.
 
 # Containers
 - [ ] DynamicArray

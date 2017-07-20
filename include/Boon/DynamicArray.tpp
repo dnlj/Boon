@@ -401,4 +401,14 @@ namespace Boon {
 	inline const T* DynamicArray<T>::getData() const {
 		return data;
 	}
+
+	template<class T>
+	typename DynamicArray<T>::Iterator DynamicArray<T>::begin() {
+		return Iterator{data};
+	}
+
+	template<class T>
+	typename DynamicArray<T>::Iterator DynamicArray<T>::end() {
+		return Iterator{data + size};
+	}
 }
