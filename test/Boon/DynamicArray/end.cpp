@@ -21,3 +21,21 @@ TEST_CASE("DynamicArray: end", "[DynamicArray][end]") {
 		}
 	}
 }
+
+TEST_CASE("DynamicArray: end const", "[DynamicArray][end]") {
+	GIVEN("an empty DynamicArray") {
+		const Boon::DynamicArray<int> arr;
+
+		THEN("end is equal to begin") {
+			REQUIRE(arr.end() == arr.begin());
+		}
+	}
+
+	GIVEN("an non-empty DynamicArray") {
+		const Boon::DynamicArray<int> arr{1, 2, 4, 8, 16};
+
+		THEN("end is not equal to begin") {
+			REQUIRE(arr.end() != arr.begin());
+		}
+	}
+}
