@@ -1,5 +1,6 @@
 #pragma once
 
+
 namespace Boon {
 	/**
 	 * @brief A resizable array similar to std::vector.
@@ -201,6 +202,8 @@ namespace Boon {
 		public:
 			using Iterator = IteratorBase<false>;
 			using ConstIterator = IteratorBase<true>;
+			using ReverseIterator = std::reverse_iterator<Iterator>;
+			using ReverseConstIterator = std::reverse_iterator<ConstIterator>;
 
 			/**
 			 * @brief Constructs a Boon::DynamicArray.
@@ -394,6 +397,12 @@ namespace Boon {
 			ConstIterator cbegin() const;
 
 			/**
+			 * @brief Gets an iterator to the last element in the array.
+			 * @return An iterator to the last element in the array.
+			 */
+			ReverseIterator rbegin();
+
+			/**
 			 * @brief Gets an iterator to one past the last element in the array.
 			 * @return An iterator to one past the last element in the array.
 			 */
@@ -405,14 +414,16 @@ namespace Boon {
 			/** @copydoc Boon::DynamicArray::end */
 			ConstIterator cend() const;
 
+			/**
+			 * @brief Gets an iterator to one before the first element in the array.
+			 * @return An iterator to one before the first element in the array.
+			 */
+			ReverseIterator rend();
+
 			/* TODO:
-
-
-			... rbegin();
 			... rbegin() const;
 			... crbegin() const;
 
-			... rend();
 			... rend() const;
 			... crend() const;
 			*/
