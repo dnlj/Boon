@@ -331,9 +331,15 @@ namespace Boon {
 			 */
 			Iterator insert(Iterator it, size_t count, const T& value);
 
+			/**
+			 * @breif Inserts p@ value at the end of the array.
+			 * @param[in] value The value to insert at the end of the array.
+			 * @return An iterator to the inserted value.
+			 */
+			Iterator pushBack(const T& value);
 
 			/* TODO: 
-			Iterator pushBack(T value); // TODO: make this use insert?
+			Iterator pushBack(T&& value);
 			void popBack(); // TODO: make this use erase?
 			void erase(size_t index); // Just make this use start with end = start for simplicity and consitency
 			void erase(size_t start, size_t end);

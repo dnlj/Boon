@@ -317,6 +317,11 @@ namespace Boon {
 	}
 
 	template<class T>
+	typename DynamicArray<T>::Iterator DynamicArray<T>::pushBack(const T& value) {
+		return insert(end(), value);
+	}
+
+	template<class T>
 	void DynamicArray<T>::clear() {
 		delete[] data;
 		size = 0;
