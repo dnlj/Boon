@@ -303,6 +303,15 @@ namespace Boon {
 			Iterator insert(size_t index, const T& value);
 			
 			/**
+			 * @brief Moves the value @p value into the index @p index.
+			 * @param[in] index The index to insert at.
+			 * @param[in] value The value move.
+			 * @throws std::out_of_range When @p index is larger than the size of the array.
+			 * @return A iterator to the inserted value.
+			 */
+			Iterator insert(size_t index, T&& value);
+
+			/**
 			 * @brief Inserts the value @p value before @p it.
 			 * @param[in] it The iterator to insert @p value before.
 			 * @param[in] value The value to insert.
@@ -346,7 +355,6 @@ namespace Boon {
 			void pushBack(T&& value);
 
 			/* TODO: 
-			Iterator insert(size_t index, T&& value);
 			Iterator insert(Iterator index, T&& value);
 			void popBack(); // TODO: make this use erase?
 			void erase(size_t index); // Just make this use start with end = start for simplicity and consitency
