@@ -300,7 +300,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p index is larger than the size of the array.
 			 * @return A iterator to the inserted value.
 			 */
-			Iterator insert(size_t index, T value);
+			Iterator insert(size_t index, const T& value);
 			
 			/**
 			 * @brief Inserts the value @p value before @p it.
@@ -309,7 +309,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p it is out of range.
 			 * @return A iterator to the inserted value.
 			 */
-			Iterator insert(Iterator it, T value);
+			Iterator insert(Iterator it, const T& value);
 
 			/**
 			 * @brief Inserts @p count copies of @p value at the index @p index.
@@ -319,7 +319,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p index is larger than the size of the array.
 			 * @return A iterator to the first inserted value.
 			 */
-			Iterator insert(size_t index, size_t count, T value);
+			Iterator insert(size_t index, size_t count, const T& value);
 
 			/**
 			 * @brief Inserts @p count copies of @p value before @p it.
@@ -329,7 +329,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p it is out of range.
 			 * @return A iterator to the first inserted value.
 			 */
-			Iterator insert(Iterator it, size_t count, T value);
+			Iterator insert(Iterator it, size_t count, const T& value);
 
 
 			/* TODO: 

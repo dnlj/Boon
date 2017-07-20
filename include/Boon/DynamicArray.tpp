@@ -277,17 +277,17 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, T value) {
-		return insert(index, 1, std::move(value));
+	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, const T& value) {
+		return insert(index, 1, value);
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(Iterator it, T value) {
-		return insert(it, 1, std::move(value));
+	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(Iterator it, const T& value) {
+		return insert(it, 1, value);
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, size_t count, T value) {
+	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, size_t count, const T& value) {
 		// Make sure index is valid
 		if (index > size) {
 			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::getSize()");
@@ -312,8 +312,8 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(Iterator it, size_t count, T value) {
-		return insert(it - begin(), count, std::move(value));
+	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(Iterator it, size_t count, const T& value) {
+		return insert(it - begin(), count, value);
 	}
 
 	template<class T>
