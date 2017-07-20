@@ -322,6 +322,13 @@ namespace Boon {
 	}
 
 	template<class T>
+	void DynamicArray<T>::pushBack(T&& value) {
+		reserveCapacity(size + 1);
+		data[size] = std::move(value);
+		++size;
+	}
+
+	template<class T>
 	void DynamicArray<T>::clear() {
 		delete[] data;
 		size = 0;
