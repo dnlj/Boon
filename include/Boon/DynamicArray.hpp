@@ -34,6 +34,13 @@ namespace Boon {
 					IteratorBase(const IteratorBase& other);
 
 					/**
+					 * @brief Converts and Iterator to an Iterator<Const = true>.
+					 * @param[in] other The IteratorBase to convert.
+					 */
+					template<typename = std::enable_if<IsConst>::type>
+					IteratorBase(const IteratorBase<false>& other);
+
+					/**
 					 * @brief Constructs an IteratorBase from @p ptr.
 					 * @param[in] ptr The pointer to represent.
 					 */
@@ -197,6 +204,9 @@ namespace Boon {
 				private:
 					/** The internal pointer manipulated by this iterator. */
 					pointer ptr = nullptr;
+
+					friend class IteratorBase<false>;
+					friend class IteratorBase<true>;
 			};
 
 		public:
@@ -318,7 +328,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p it is out of range.
 			 * @return A iterator to the inserted value.
 			 */
-			Iterator insert(Iterator it, const T& value);
+			Iterator insert(ConstIterator it, const T& value);
 
 			/**
 			 * @brief Moves the value @p value before @p it.
@@ -327,7 +337,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p index is larger than the size of the array.
 			 * @return A iterator to the inserted value.
 			 */
-			Iterator insert(Iterator it, T&& value);
+			Iterator insert(ConstIterator it, T&& value);
 
 			/**
 			 * @brief Inserts @p count copies of @p value at the index @p index.
@@ -347,7 +357,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p it is out of range.
 			 * @return A iterator to the first inserted value.
 			 */
-			Iterator insert(Iterator it, size_t count, const T& value);
+			Iterator insert(ConstIterator it, size_t count, const T& value);
 
 			/**
 			 * @breif Inserts p@ value at the end of the array.

@@ -27,6 +27,13 @@ namespace Boon {
 
 	template<class T>
 	template<bool IsConst>
+	template<typename>
+	DynamicArray<T>::IteratorBase<IsConst>::IteratorBase(const IteratorBase<false>& other) :
+		ptr{other.ptr} {
+	}
+
+	template<class T>
+	template<bool IsConst>
 	DynamicArray<T>::IteratorBase<IsConst>::IteratorBase(pointer ptr) :
 		ptr{ptr} {
 	}
@@ -305,12 +312,12 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(Iterator it, T&& value) {
+	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(ConstIterator it, T&& value) {
 		return insert(it - begin(), std::move(value));
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(Iterator it, const T& value) {
+	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(ConstIterator it, const T& value) {
 		return insert(it, 1, value);
 	}
 
@@ -340,7 +347,7 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(Iterator it, size_t count, const T& value) {
+	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(ConstIterator it, size_t count, const T& value) {
 		return insert(it - begin(), count, value);
 	}
 
