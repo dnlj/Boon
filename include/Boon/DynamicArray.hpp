@@ -203,7 +203,7 @@ namespace Boon {
 			using Iterator = IteratorBase<false>;
 			using ConstIterator = IteratorBase<true>;
 			using ReverseIterator = std::reverse_iterator<Iterator>;
-			using ReverseConstIterator = std::reverse_iterator<ConstIterator>;
+			using ConstReverseIterator = std::reverse_iterator<ConstIterator>;
 
 			/**
 			 * @brief Constructs a Boon::DynamicArray.
@@ -402,6 +402,9 @@ namespace Boon {
 			 */
 			ReverseIterator rbegin();
 
+			/** @copydoc Boon::DynamicArray::rbegin */
+			ConstReverseIterator rbegin() const;
+
 			/**
 			 * @brief Gets an iterator to one past the last element in the array.
 			 * @return An iterator to one past the last element in the array.
@@ -420,11 +423,12 @@ namespace Boon {
 			 */
 			ReverseIterator rend();
 
+			/** @copydoc Boon::DynamicArray::rend */
+			ConstReverseIterator rend() const;
+
 			/* TODO:
-			... rbegin() const;
 			... crbegin() const;
 
-			... rend() const;
 			... crend() const;
 			*/
 
