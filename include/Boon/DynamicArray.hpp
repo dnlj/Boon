@@ -336,7 +336,7 @@ namespace Boon {
 			 * @param[in] value The value to insert at the end of the array.
 			 * @return An iterator to the inserted value.
 			 */
-			Iterator pushBack(const T& value);
+			void pushBack(const T& value);
 
 			/* TODO: 
 			Iterator pushBack(T&& value);

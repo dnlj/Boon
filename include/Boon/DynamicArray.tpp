@@ -317,8 +317,8 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::pushBack(const T& value) {
-		return insert(end(), value);
+	void DynamicArray<T>::pushBack(const T& value) {
+		insert(end(), value);
 	}
 
 	template<class T>
