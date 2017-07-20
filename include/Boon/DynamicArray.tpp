@@ -421,4 +421,14 @@ namespace Boon {
 	typename DynamicArray<T>::ConstIterator DynamicArray<T>::end() const {
 		return ConstIterator{data + size};
 	}
+
+	template<class T>
+	typename DynamicArray<T>::ConstIterator DynamicArray<T>::cbegin() const {
+		return begin();
+	}
+
+	template<class T>
+	typename DynamicArray<T>::ConstIterator DynamicArray<T>::cend() const {
+		return end();
+	}
 }

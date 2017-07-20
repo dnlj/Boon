@@ -390,6 +390,9 @@ namespace Boon {
 			/** @copydoc Boon::DynamicArray::begin */
 			ConstIterator begin() const;
 
+			/** @copydoc Boon::DynamicArray::begin */
+			ConstIterator cbegin() const;
+
 			/**
 			 * @brief Gets an iterator to one past the last element in the array.
 			 * @return An iterator to one past the last element in the array.
@@ -399,10 +402,11 @@ namespace Boon {
 			/** @copydoc Boon::DynamicArray::end */
 			ConstIterator end() const;
 
-			/* TODO:
-			ConstIterator cbegin() const;
-
+			/** @copydoc Boon::DynamicArray::end */
 			ConstIterator cend() const;
+
+			/* TODO:
+
 
 			... rbegin();
 			... rbegin() const;
