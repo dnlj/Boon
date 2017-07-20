@@ -53,4 +53,11 @@ namespace Boon {
 			*(outStart++) = *(inStart++);
 		}
 	}
+
+	template<class InIt, class OutIt>
+	void move(InIt inStart, InIt inEnd, OutIt outStart) {
+		while (inStart != inEnd) {
+			*(outStart++) = std::move(*(inStart++));
+		}
+	}
 }

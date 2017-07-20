@@ -77,6 +77,18 @@ namespace Boon {
 	 */
 	template<class InIt, class OutIt>
 	void copy(InIt inStart, InIt inEnd, OutIt outStart);
+
+	/**
+	 * @brief Moves all elements from @p inStart until @p inEnd into @p outStart.
+	 * @tparam InIt The iterator type for @p inStart and @p inEnd.
+	 * @tparam OutIt The iterator type for @p outStart.
+	 * @param[in] inStart The iterator to start moving from.
+	 * @param[in] inEnd The iterator to move until.
+	 * @param[out] outStart The start iterator to move into.
+	 * @return void
+	 */
+	template<class InIt, class OutIt>
+	void move(InIt inStart, InIt inEnd, OutIt outStart);
 }
 
 #include <Boon/algorithm.tpp>
