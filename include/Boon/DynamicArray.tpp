@@ -300,6 +300,11 @@ namespace Boon {
 	}
 
 	template<class T>
+	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(Iterator it, T value) {
+		return insert(it - begin(), std::move(value));
+	}
+
+	template<class T>
 	void DynamicArray<T>::clear() {
 		delete[] data;
 		size = 0;

@@ -302,8 +302,16 @@ namespace Boon {
 			 */
 			Iterator insert(size_t index, T value);
 			
-			/* TODO: 
+			/**
+			 * @brief Inserts the value @p value before @p it.
+			 * @param[in] it The iterator to insert @p value before.
+			 * @param[in] value The value to insert.
+			 * @throws std::out_of_range When @p it is out of range.
+			 * @return A iterator to the inserted value.
+			 */
 			Iterator insert(Iterator it, T value);
+
+			/* TODO: 
 			Iterator insert(size_t index, size_t count, T value);
 			Iterator insert(Iterator it, size_t count, T value);
 			Iterator pushBack(T value); // TODO: make this use insert?
