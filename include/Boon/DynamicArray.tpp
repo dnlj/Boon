@@ -305,6 +305,31 @@ namespace Boon {
 	}
 
 	template<class T>
+	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, size_t count, T value) {
+		// Make sure index is valid
+		if (index > size) {
+			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::getSize()");
+		}
+
+		// Reserver the additional capacity
+		reserveCapacity(size + count);
+
+		// Shift values
+		for (size_t i = size + count - 1; i > index; --i) {
+			data[i] = data[i - count];
+		}
+
+		// Insert our new values
+		for (size_t i = index; i < index + count; ++i) {
+			data[i] = value;
+		}
+		size += count;
+
+		// Return an iterator to our new values
+		return Iterator{data + index};
+	}
+
+	template<class T>
 	void DynamicArray<T>::clear() {
 		delete[] data;
 		size = 0;

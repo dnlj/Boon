@@ -311,8 +311,17 @@ namespace Boon {
 			 */
 			Iterator insert(Iterator it, T value);
 
-			/* TODO: 
+			/**
+			 * @brief Inserts @p count copies of @p value at the index @p index.
+			 * @param[in] index The index to insert at.
+			 * @param[in] count The number of values to insert.
+			 * @param[in] value The value to insert.
+			 * @throws std::out_of_range When @p index is larger than the size of the array.
+			 * @return A iterator to the first inserted value.
+			 */
 			Iterator insert(size_t index, size_t count, T value);
+
+			/* TODO: 
 			Iterator insert(Iterator it, size_t count, T value);
 			Iterator pushBack(T value); // TODO: make this use insert?
 
