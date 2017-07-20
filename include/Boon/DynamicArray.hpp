@@ -405,6 +405,8 @@ namespace Boon {
 			/** @copydoc Boon::DynamicArray::rbegin */
 			ConstReverseIterator rbegin() const;
 
+			ConstReverseIterator crbegin() const;
+
 			/**
 			 * @brief Gets an iterator to one past the last element in the array.
 			 * @return An iterator to one past the last element in the array.
@@ -426,11 +428,7 @@ namespace Boon {
 			/** @copydoc Boon::DynamicArray::rend */
 			ConstReverseIterator rend() const;
 
-			/* TODO:
-			... crbegin() const;
-
-			... crend() const;
-			*/
+			ConstReverseIterator crend() const;
 
 			/**
 			 * @brief swaps @p first and @p second.
