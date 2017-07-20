@@ -321,10 +321,19 @@ namespace Boon {
 			 */
 			Iterator insert(size_t index, size_t count, T value);
 
-			/* TODO: 
+			/**
+			 * @brief Inserts @p count copies of @p value before @p it.
+			 * @param[in] it The iterator to insert before.
+			 * @param[in] count The number of values to insert.
+			 * @param[in] value The value to insert.
+			 * @throws std::out_of_range When @p it is out of range.
+			 * @return A iterator to the first inserted value.
+			 */
 			Iterator insert(Iterator it, size_t count, T value);
-			Iterator pushBack(T value); // TODO: make this use insert?
 
+
+			/* TODO: 
+			Iterator pushBack(T value); // TODO: make this use insert?
 			void popBack(); // TODO: make this use erase?
 			void erase(size_t index); // Just make this use start with end = start for simplicity and consitency
 			void erase(size_t start, size_t end);
