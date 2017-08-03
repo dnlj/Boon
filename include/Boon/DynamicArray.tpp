@@ -1,3 +1,6 @@
+// STD
+#include <stdexcept>
+
 // Boon
 #include <Boon/algorithm.hpp>
 
@@ -361,6 +364,26 @@ namespace Boon {
 		reserveCapacity(size + 1);
 		data[size] = std::move(value);
 		++size;
+	}
+
+	template<class T>
+	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(size_t startIndex, size_t endIndex) {
+		if (Boon::max(startIndex, endIndex) > size) {
+			throw std::out_of_range("The index \"" + std::to_string(Boon::max(startIndex, endIndex)) + "\" is larger than DynamicArray<T>::getSize()");
+		}
+
+		if (endIndex < startIndex) {
+			throw std::domain_error("endIndex (" + std::to_string(endIndex) + ") must be smaller than startIndex (" + std::to_string(startIndex) + ")");
+		}
+
+		for (size_t i = 0; i < size; ++i) {
+			data[i].~T();
+		}
+
+		Boon::move(begin() + endIndex, end(), begin() + startIndex);
+		size -= endIndex - startIndex;
+
+		return begin() + startIndex;
 	}
 
 	template<class T>

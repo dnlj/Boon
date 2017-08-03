@@ -360,24 +360,34 @@ namespace Boon {
 			Iterator insert(ConstIterator it, size_t count, const T& value);
 
 			/**
-			 * @breif Inserts p@ value at the end of the array.
+			 * @brief Inserts p@ value at the end of the array.
 			 * @param[in] value The value to insert at the end of the array.
 			 * @return void
 			 */
 			void pushBack(const T& value);
 
 			/**
-			 * @breif Move the p@ value to the end of the array.
+			 * @brief Move the p@ value to the end of the array.
 			 * @param[in] value The value to move to the end of the array.
 			 * @return void
 			 */
 			void pushBack(T&& value);
 
+			/**
+			 * @brief Removes elements in the range [@p start, @p end).
+			 * @param[in] start The start of the range of elements to remove.
+			 * @param[in] end The end of the range of elements to remove.
+			 * @throws std::out_of_range When @p start or @p end is larger than the size of the array.
+			 * @throws std::domain_error When @p end is larger than @p start.
+			 * @return An iterator after the last removed element.
+			 */
+			Iterator erase(size_t startIndex, size_t endIndex);
+
 			/* TODO: 
-			Iterator insert(Iterator index, T&& value);
 			void popBack(); // TODO: make this use erase?
-			void erase(size_t index); // Just make this use start with end = start for simplicity and consitency
-			void erase(size_t start, size_t end);
+			Iterator erase(size_t index);
+			Iterator erase(ConstIterator it);
+			Iterator erase(ConstIterator beginIt, ConstIterator endIt);
 			*/
 			
 			/**
