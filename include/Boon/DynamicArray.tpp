@@ -368,15 +368,19 @@ namespace Boon {
 
 	template<class T>
 	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(size_t startIndex, size_t endIndex) {
-		if (Boon::max(startIndex, endIndex) > size) {
-			throw std::out_of_range("The index \"" + std::to_string(Boon::max(startIndex, endIndex)) + "\" is larger than DynamicArray<T>::getSize()");
+		if (startIndex >= size) {
+			throw std::out_of_range("The start index \"" + std::to_string(startIndex) + "\" is greater or equal to DynamicArray<T>::getSize()");
 		}
 
-		if (endIndex < startIndex) {
-			throw std::domain_error("endIndex (" + std::to_string(endIndex) + ") must be smaller than startIndex (" + std::to_string(startIndex) + ")");
+		if (endIndex > size) {
+			throw std::out_of_range("The end index \"" + std::to_string(endIndex) + "\" is greater than DynamicArray<T>::getSize()");
 		}
 
-		for (size_t i = 0; i < size; ++i) {
+		if (endIndex <= startIndex) {
+			throw std::domain_error("end index (" + std::to_string(endIndex) + ") must be greater than start index (" + std::to_string(startIndex) + ")");
+		}
+
+		for (size_t i = 0; i < endIndex; ++i) {
 			data[i].~T();
 		}
 

@@ -8,16 +8,11 @@ TEST_CASE("DynamicArray: erase - index, range", "[DynamicArray][erase]") {
 	GIVEN("an empty DynamicArray") {
 		Boon::DynamicArray<int> arr;
 
-		WHEN("erase is called with a valid range") {
-			THEN("no exception is thrown") {
-				REQUIRE_NOTHROW(arr.erase(0, 0));
-			}
-		}
-
 		WHEN("erase is called with a invalid range") {
 			THEN("an exception is thrown") {
+				REQUIRE_THROWS(arr.erase(0, 0));
 				REQUIRE_THROWS(arr.erase(0, 1));
-				REQUIRE_THROWS(arr.erase(1, 1));
+				REQUIRE_THROWS(arr.erase(0, 2));
 				REQUIRE_THROWS(arr.erase(1, 0));
 			}
 		}
@@ -40,6 +35,37 @@ TEST_CASE("DynamicArray: erase - index, range", "[DynamicArray][erase]") {
 
 			THEN("the returned iterator is to the next element in the array") {
 				REQUIRE(*it == 32);
+			}
+		}
+
+		WHEN("erase is called over the whole range") {
+			constexpr size_t start = 0;
+			const size_t end = arr.getSize();
+			const auto it = arr.erase(start, end);
+
+			THEN("the elements in the range are removed") {
+				REQUIRE(arr.getSize() == 0);
+			}
+
+			THEN("the returned iterator is end()") {
+				REQUIRE(it == arr.end());
+			}
+		}
+
+		WHEN("erase is called with a invalid range (start == end)") {
+			constexpr size_t start = 2;
+			constexpr size_t end = start;
+
+			THEN("an exception is thrown") {
+				REQUIRE_THROWS(arr.erase(start, end));
+
+				THEN("the elements in the array are not modified") {
+					REQUIRE(arr.getSize() == arr_reference.getSize());
+
+					for (size_t i = 0; i < arr.getSize(); ++i) {
+						REQUIRE(arr[i] == arr_reference[i]);
+					}
+				}
 			}
 		}
 

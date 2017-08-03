@@ -377,8 +377,9 @@ namespace Boon {
 			 * @brief Removes elements in the range [@p start, @p end).
 			 * @param[in] start The start of the range of elements to remove.
 			 * @param[in] end The end of the range of elements to remove.
-			 * @throws std::out_of_range When @p start or @p end is larger than the size of the array.
-			 * @throws std::domain_error When @p end is larger than @p start.
+			 * @throws std::out_of_range When @p start is greater than or equal to the size of the array.
+			 * @throws std::out_of_range When @p end is greater than the size of the array.
+			 * @throws std::domain_error When @p end is greater than or equal to @p start.
 			 * @return An iterator after the last removed element.
 			 */
 			Iterator erase(size_t startIndex, size_t endIndex);
