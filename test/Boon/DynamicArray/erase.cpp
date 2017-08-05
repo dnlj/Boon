@@ -34,7 +34,7 @@ TEST_CASE("DynamicArray: erase - index, range", "[DynamicArray][erase]") {
 			}
 
 			THEN("the returned iterator is to the next element in the array") {
-				REQUIRE(*it == 32);
+				REQUIRE(*it == arr_reference[end]);
 			}
 		}
 
@@ -92,6 +92,56 @@ TEST_CASE("DynamicArray: erase - index, range", "[DynamicArray][erase]") {
 
 			THEN("an exception is thrown") {
 				REQUIRE_THROWS(arr.erase(start, end));
+
+				THEN("the elements in the array are not modified") {
+					REQUIRE(arr.getSize() == arr_reference.getSize());
+
+					for (size_t i = 0; i < arr.getSize(); ++i) {
+						REQUIRE(arr[i] == arr_reference[i]);
+					}
+				}
+			}
+		}
+	}
+}
+
+TEST_CASE("DynamicArray: erase - index", "[DynamicArray][erase]") {
+	GIVEN("an empty DynamicArray") {
+		Boon::DynamicArray<int> arr;
+
+		WHEN("erase is called with a invalid index") {
+			THEN("an exception is thrown") {
+				REQUIRE_THROWS(arr.erase(0));
+				REQUIRE_THROWS(arr.erase(1));
+			}
+		}
+	}
+
+	GIVEN("an non-empty DynamicArray") {
+		const Boon::DynamicArray<int> arr_reference = {1, 2, 4, 8, 16, 32};
+		Boon::DynamicArray<int> arr = arr_reference;
+
+		WHEN("erase is called with a valid index") {
+			constexpr size_t index = 1;
+			const auto it = arr.erase(index);
+
+			THEN("the element is removed and the other elements are unchanged") {
+				REQUIRE(arr.getSize() == arr_reference.getSize() - 1);
+				for (size_t i = 0; i < arr.getSize(); ++i) {
+					REQUIRE(arr[i] ==  arr_reference[i >= index ? i + 1 : i]);
+				}
+			}
+
+			THEN("the returned iterator is to the next element in the array") {
+				REQUIRE(*it == arr_reference[index + 1]);
+			}
+		}
+
+		WHEN("erase is called with a invalid index") {
+			const size_t index = arr.getSize();
+
+			THEN("an exception is thrown") {
+				REQUIRE_THROWS(arr.erase(index));
 
 				THEN("the elements in the array are not modified") {
 					REQUIRE(arr.getSize() == arr_reference.getSize());

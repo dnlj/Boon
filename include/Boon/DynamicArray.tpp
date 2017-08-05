@@ -391,6 +391,11 @@ namespace Boon {
 	}
 
 	template<class T>
+	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(size_t index) {
+		return erase(index, index + 1);
+	}
+
+	template<class T>
 	void DynamicArray<T>::clear() {
 		delete[] data;
 		size = 0;
