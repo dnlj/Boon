@@ -154,7 +154,7 @@ namespace Boon {
 					/**
 					 * @brief Swaps two iterators.
 					 * @param[in] first The iterator to swap with @p second.
-					 * @param[in] first The iterator to swap with @p first.
+					 * @param[in] second The iterator to swap with @p first.
 					 */
 					friend void swap(IteratorBase& first, IteratorBase& second) noexcept {
 						using std::swap;
