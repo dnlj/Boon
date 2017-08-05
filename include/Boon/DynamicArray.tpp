@@ -367,27 +367,27 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(size_t startIndex, size_t endIndex) {
-		if (startIndex >= size) {
-			throw std::out_of_range("The start index \"" + std::to_string(startIndex) + "\" is greater or equal to DynamicArray<T>::getSize()");
+	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(size_t beginIndex, size_t endIndex) {
+		if (beginIndex >= size) {
+			throw std::out_of_range("The start index \"" + std::to_string(beginIndex) + "\" is greater or equal to DynamicArray<T>::getSize()");
 		}
 
 		if (endIndex > size) {
 			throw std::out_of_range("The end index \"" + std::to_string(endIndex) + "\" is greater than DynamicArray<T>::getSize()");
 		}
 
-		if (endIndex <= startIndex) {
-			throw std::domain_error("end index (" + std::to_string(endIndex) + ") must be greater than start index (" + std::to_string(startIndex) + ")");
+		if (endIndex <= beginIndex) {
+			throw std::domain_error("end index (" + std::to_string(endIndex) + ") must be greater than start index (" + std::to_string(beginIndex) + ")");
 		}
 
 		for (size_t i = 0; i < endIndex; ++i) {
 			data[i].~T();
 		}
 
-		Boon::move(begin() + endIndex, end(), begin() + startIndex);
-		size -= endIndex - startIndex;
+		Boon::move(begin() + endIndex, end(), begin() + beginIndex);
+		size -= endIndex - beginIndex;
 
-		return begin() + startIndex;
+		return begin() + beginIndex;
 	}
 
 	template<class T>
@@ -401,8 +401,8 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(ConstIterator beginIt, ConstIterator endIt) {
-		return erase(beginIt - begin(), endIt - begin());
+	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(ConstIterator startIt, ConstIterator endIt) {
+		return erase(startIt - begin(), endIt - begin());
 	}
 
 	template<class T>

@@ -374,19 +374,19 @@ namespace Boon {
 			void pushBack(T&& value);
 
 			/**
-			 * @brief Removes elements in the range [@p start, @p end).
-			 * @param[in] start The start of the range of elements to remove.
-			 * @param[in] end The end of the range of elements to remove.
-			 * @throws std::out_of_range When @p start is greater than or equal to the size of the array.
-			 * @throws std::out_of_range When @p end is greater than the size of the array.
-			 * @throws std::domain_error When @p end is greater than or equal to @p start.
+			 * @brief Removes elements in the range [@p beginIndex, @p endIndex).
+			 * @param[in] beginIndex The start of the range of elements to remove.
+			 * @param[in] endIndex The end of the range of elements to remove.
+			 * @throws std::out_of_range When @p beginIndex is greater than or equal to the size of the array.
+			 * @throws std::out_of_range When @p endIndex is greater than the size of the array.
+			 * @throws std::domain_error When @p endIndex is greater than or equal to @p beginIndex.
 			 * @return An iterator after the last removed element.
 			 */
-			Iterator erase(size_t startIndex, size_t endIndex);
+			Iterator erase(size_t beginIndex, size_t endIndex);
 
 			/**
 			 * @brief Removes the element at @p index.
-			 * @param[in] The index to remove.
+			 * @param[in] index The index to remove.
 			 * @throws std::out_of_range When @p index is not a valid index.
 			 * @return An iterator after the removed element.
 			 */
@@ -394,13 +394,21 @@ namespace Boon {
 
 			/**
 			 * @brief Removes the element at @p it.
-			 * @param[in] The element to remove.
+			 * @param[in] it The element to remove.
 			 * @throws std::out_of_range When @p it is not a valid iterator.
 			 * @return An iterator after the removed element.
 			 */
 			Iterator erase(ConstIterator it);
 			
-			/** @copydoc Boon::DynamicArray::erase */
+			/**
+			 * @brief Removes elements in the range [@p beginIt, @p endIt).
+			 * @param[in] beginIt The start of the range of elements to remove.
+			 * @param[in] endIt The end of the range of elements to remove.
+			 * @throws std::out_of_range When @p beginIt is greater than or equal to end().
+			 * @throws std::out_of_range When @p endIt is greater than end().
+			 * @throws std::domain_error When @p endIt is greater than or equal to @p beginIt.
+			 * @return An iterator after the last removed element.
+			 */
 			Iterator erase(ConstIterator beginIt, ConstIterator endIt);
 
 			/* TODO: 
