@@ -207,3 +207,104 @@ TEST_CASE("DynamicArray: erase - iterator", "[DynamicArray][erase]") {
 		}
 	}
 }
+
+TEST_CASE("DynamicArray: erase - iterator, range", "[DynamicArray][erase]") {
+	GIVEN("an empty DynamicArray") {
+		Boon::DynamicArray<int> arr;
+
+		WHEN("erase is called with a invalid range") {
+			THEN("an exception is thrown") {
+				REQUIRE_THROWS(arr.erase(arr.begin(), arr.begin()));
+				REQUIRE_THROWS(arr.erase(arr.begin(), arr.end()));
+				REQUIRE_THROWS(arr.erase(arr.end(), arr.begin()));
+			}
+		}
+	}
+
+	GIVEN("an non-empty DynamicArray") {
+		const Boon::DynamicArray<int> arr_reference = {1, 2, 4, 8, 16, 32};
+		Boon::DynamicArray<int> arr = arr_reference;
+
+		WHEN("erase is called with a valid range") {
+			const auto start = arr.begin() + 1;
+			const auto end = arr.begin() + 5;
+			const size_t index = end - arr.begin();
+			const auto it = arr.erase(start, end);
+
+			THEN("the elements in the range are removed") {
+				REQUIRE(arr.getSize() == 2);
+				REQUIRE(arr[0] == 1);
+				REQUIRE(arr[1] == 32);
+			}
+
+			THEN("the returned iterator is to the next element in the array") {
+				REQUIRE(*it == arr_reference[index]);
+			}
+		}
+
+		WHEN("erase is called over the whole range") {
+			const auto start = arr.begin();
+			const auto end = arr.end();
+			const auto it = arr.erase(start, end);
+
+			THEN("the elements in the range are removed") {
+				REQUIRE(arr.getSize() == 0);
+			}
+
+			THEN("the returned iterator is end()") {
+				REQUIRE(it == arr.end());
+			}
+		}
+
+		WHEN("erase is called with a invalid range (start == end)") {
+			const auto start = arr.begin() + 2;
+			const auto end = start;
+
+			THEN("an exception is thrown") {
+				REQUIRE_THROWS(arr.erase(start, end));
+
+				THEN("the elements in the array are not modified") {
+					REQUIRE(arr.getSize() == arr_reference.getSize());
+
+					for (size_t i = 0; i < arr.getSize(); ++i) {
+						REQUIRE(arr[i] == arr_reference[i]);
+					}
+				}
+			}
+		}
+
+		WHEN("erase is called with a invalid range (start > end)") {
+			const auto start = arr.begin() + 5;
+			const auto end = arr.begin() + 1;
+
+			THEN("an exception is thrown") {
+				REQUIRE_THROWS(arr.erase(start, end));
+
+				THEN("the elements in the array are not modified") {
+					REQUIRE(arr.getSize() == arr_reference.getSize());
+
+					for (size_t i = 0; i < arr.getSize(); ++i) {
+						REQUIRE(arr[i] == arr_reference[i]);
+					}
+				}
+			}
+		}
+
+		WHEN("erase is called with a invalid range (start > size)") {
+			const auto start = arr.begin() + 7;
+			const auto end = arr.end() + 8;
+
+			THEN("an exception is thrown") {
+				REQUIRE_THROWS(arr.erase(start, end));
+
+				THEN("the elements in the array are not modified") {
+					REQUIRE(arr.getSize() == arr_reference.getSize());
+
+					for (size_t i = 0; i < arr.getSize(); ++i) {
+						REQUIRE(arr[i] == arr_reference[i]);
+					}
+				}
+			}
+		}
+	}
+}

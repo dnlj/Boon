@@ -399,10 +399,12 @@ namespace Boon {
 			 * @return An iterator after the removed element.
 			 */
 			Iterator erase(ConstIterator it);
+			
+			/** @copydoc Boon::DynamicArray::erase */
+			Iterator erase(ConstIterator beginIt, ConstIterator endIt);
 
 			/* TODO: 
 			void popBack(); // TODO: make this use erase?
-			Iterator erase(ConstIterator beginIt, ConstIterator endIt);
 			*/
 			
 			/**
