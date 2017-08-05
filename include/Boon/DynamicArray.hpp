@@ -392,9 +392,16 @@ namespace Boon {
 			 */
 			Iterator erase(size_t index);
 
+			/**
+			 * @brief Removes the element at @p it.
+			 * @param[in] The element to remove.
+			 * @throws std::out_of_range When @p it is not a valid iterator.
+			 * @return An iterator after the removed element.
+			 */
+			Iterator erase(ConstIterator it);
+
 			/* TODO: 
 			void popBack(); // TODO: make this use erase?
-			Iterator erase(ConstIterator it);
 			Iterator erase(ConstIterator beginIt, ConstIterator endIt);
 			*/
 			
