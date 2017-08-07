@@ -295,7 +295,7 @@ namespace Boon {
 	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, T&& value) {
 		// Make sure index is valid
 		if (index > data_size) {
-			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::getSize()");
+			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::size()");
 		}
 
 		// Reserver the additional capacity
@@ -328,7 +328,7 @@ namespace Boon {
 	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, size_t count, const T& value) {
 		// Make sure index is valid
 		if (index > data_size) {
-			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::getSize()");
+			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::size()");
 		}
 
 		// Reserver the additional capacity
@@ -369,11 +369,11 @@ namespace Boon {
 	template<class T>
 	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(size_t beginIndex, size_t endIndex) {
 		if (beginIndex >= data_size) {
-			throw std::out_of_range("The start index \"" + std::to_string(beginIndex) + "\" is greater or equal to DynamicArray<T>::getSize()");
+			throw std::out_of_range("The start index \"" + std::to_string(beginIndex) + "\" is greater or equal to DynamicArray<T>::size()");
 		}
 
 		if (endIndex > data_size) {
-			throw std::out_of_range("The end index \"" + std::to_string(endIndex) + "\" is greater than DynamicArray<T>::getSize()");
+			throw std::out_of_range("The end index \"" + std::to_string(endIndex) + "\" is greater than DynamicArray<T>::size()");
 		}
 
 		if (endIndex <= beginIndex) {
@@ -427,7 +427,7 @@ namespace Boon {
 	}
 	
 	template<class T>
-	inline size_t DynamicArray<T>::getSize() const {
+	inline size_t DynamicArray<T>::size() const {
 		return data_size;
 	}
 

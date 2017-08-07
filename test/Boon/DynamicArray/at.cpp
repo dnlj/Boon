@@ -21,14 +21,14 @@ TEST_CASE("DynamicArray: at", "[DynamicArray][at]") {
 
 		WHEN("at is called with a index less than the size") {
 			THEN("the element of the array at index is returned") {
-				for(size_t i = 0; i < arr.getSize(); ++i) {
+				for(size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(arr.at(i) == arr[i]);
 				}
 			}
 		}
 
 		WHEN("at is called with a index equal to the size") {
-			size_t index = arr.getSize();
+			size_t index = arr.size();
 
 			THEN("and exception is thrown") {
 				REQUIRE_THROWS_AS(arr.at(index), std::out_of_range);
@@ -36,7 +36,7 @@ TEST_CASE("DynamicArray: at", "[DynamicArray][at]") {
 		}
 
 		WHEN("at is called with a index greater than the size") {
-			size_t index = arr.getSize() + 1;
+			size_t index = arr.size() + 1;
 
 			THEN("and exception is thrown") {
 				REQUIRE_THROWS_AS(arr.at(index), std::out_of_range);
@@ -62,14 +62,14 @@ TEST_CASE("DynamicArray: at - const", "[DynamicArray][at]") {
 
 		WHEN("at is called with a index less than the size") {
 			THEN("the element of the array at index is returned") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(arr.at(i) == arr[i]);
 				}
 			}
 		}
 
 		WHEN("at is called with a index equal to the size") {
-			size_t index = arr.getSize();
+			size_t index = arr.size();
 
 			THEN("and exception is thrown") {
 				REQUIRE_THROWS_AS(arr.at(index), std::out_of_range);
@@ -77,7 +77,7 @@ TEST_CASE("DynamicArray: at - const", "[DynamicArray][at]") {
 		}
 
 		WHEN("at is called with a index greater than the size") {
-			size_t index = arr.getSize() + 1;
+			size_t index = arr.size() + 1;
 
 			THEN("and exception is thrown") {
 				REQUIRE_THROWS_AS(arr.at(index), std::out_of_range);

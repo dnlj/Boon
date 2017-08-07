@@ -9,7 +9,7 @@ TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
 		Boon::DynamicArray<int> arr;
 
 		THEN("capacity is greater or equal to it's size") {
-			REQUIRE(arr.getCapacity() >= arr.getSize());
+			REQUIRE(arr.getCapacity() >= arr.size());
 		}
 
 		WHEN("capacity is reserved greater than current capacity") {
@@ -39,7 +39,7 @@ TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
 		Boon::DynamicArray<int> arr{1, 2, 4, 8, 16, 32, 64};
 
 		THEN("capacity is greater or equal to it's size") {
-			REQUIRE(arr.getCapacity() >= arr.getSize());
+			REQUIRE(arr.getCapacity() >= arr.size());
 		}
 
 		WHEN("capacity is reserved greater than current capacity") {

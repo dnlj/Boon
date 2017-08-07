@@ -21,7 +21,7 @@ TEST_CASE("DynamicArray: pop_back", "[DynamicArray][pop_back]") {
 			arr.pop_back();
 
 			THEN("the last element in the array is removed") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(arr[i] == arr_reference[i]);
 				}
 			}

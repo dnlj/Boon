@@ -22,7 +22,7 @@ TEST_CASE("DynamicArray: rbegin", "[DynamicArray][rbegin]") {
 		}
 
 		THEN("rbegin has the value of the last element in the array") {
-			REQUIRE(*arr.rbegin() == arr[arr.getSize() - 1]);
+			REQUIRE(*arr.rbegin() == arr[arr.size() - 1]);
 		}
 	}
 }
@@ -44,7 +44,7 @@ TEST_CASE("DynamicArray: rbegin const", "[DynamicArray][rbegin]") {
 		}
 
 		THEN("rbegin has the value of the last element in the array") {
-			REQUIRE(*arr.rbegin() == arr[arr.getSize() - 1]);
+			REQUIRE(*arr.rbegin() == arr[arr.size() - 1]);
 		}
 	}
 }

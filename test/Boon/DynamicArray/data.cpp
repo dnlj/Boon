@@ -28,7 +28,7 @@ TEST_CASE("DynamicArray: data", "[DynamicArray][data]") {
 			}
 
 			THEN("the elements of the returned array are equal to the elements of the DynamicArray") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(data[i] == arr[i]);
 				}
 			}
@@ -60,7 +60,7 @@ TEST_CASE("DynamicArray: data - const", "[DynamicArray][data]") {
 			}
 
 			THEN("the elements of the returned array are equal to the elements of the DynamicArray") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(data[i] == arr[i]);
 				}
 			}

@@ -17,7 +17,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size increases") {
-				REQUIRE(arr.getSize() == 1);
+				REQUIRE(arr.size() == 1);
 			}
 			
 			THEN("the item at that position has the corresponding value") {
@@ -31,7 +31,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 			}
 			
 			THEN("the size is not changed") {
-				REQUIRE(arr.getSize() == 0);
+				REQUIRE(arr.size() == 0);
 			}
 		}
 	}
@@ -39,7 +39,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 	GIVEN("an non-empty DynamicArray") {
 		Boon::DynamicArray<int> arr{2, 4, 8, 16, 32};
 		const auto reference = arr;
-		const size_t initialSize = arr.getSize();
+		const size_t initialSize = arr.size();
 
 		WHEN("an item is inserted at the beginning") {
 			constexpr int value = 1;
@@ -50,7 +50,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by one") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -58,7 +58,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 1; i < arr.getSize(); ++i) {
+				for (size_t i = 1; i < arr.size(); ++i) {
 					REQUIRE(reference[i - 1] == arr[i]);
 				}
 			}
@@ -73,7 +73,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -81,7 +81,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < reference.getSize(); ++i) {
+				for (size_t i = 0; i < reference.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -97,7 +97,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by one") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -105,7 +105,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					if (i == index) { continue; }
 					REQUIRE(reference[i - (i > index ? 1 : 0)] == arr[i]);
 				}
@@ -121,7 +121,7 @@ TEST_CASE("DynamicArray: insert - index", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 1; i < arr.getSize(); ++i) {
+				for (size_t i = 1; i < arr.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -143,7 +143,7 @@ TEST_CASE("DynamicArray: insert - index, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size increases") {
-				REQUIRE(arr.getSize() == 1);
+				REQUIRE(arr.size() == 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -157,7 +157,7 @@ TEST_CASE("DynamicArray: insert - index, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size is not changed") {
-				REQUIRE(arr.getSize() == 0);
+				REQUIRE(arr.size() == 0);
 			}
 		}
 	}
@@ -165,7 +165,7 @@ TEST_CASE("DynamicArray: insert - index, move", "[DynamicArray][insert]") {
 	GIVEN("an non-empty DynamicArray") {
 		Boon::DynamicArray<int> arr{2, 4, 8, 16, 32};
 		const auto reference = arr;
-		const size_t initialSize = arr.getSize();
+		const size_t initialSize = arr.size();
 
 		WHEN("an item is inserted at the beginning") {
 			constexpr int value = 1;
@@ -177,7 +177,7 @@ TEST_CASE("DynamicArray: insert - index, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by one") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -185,7 +185,7 @@ TEST_CASE("DynamicArray: insert - index, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 1; i < arr.getSize(); ++i) {
+				for (size_t i = 1; i < arr.size(); ++i) {
 					REQUIRE(reference[i - 1] == arr[i]);
 				}
 			}
@@ -202,7 +202,7 @@ TEST_CASE("DynamicArray: insert - index, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -210,7 +210,7 @@ TEST_CASE("DynamicArray: insert - index, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < reference.getSize(); ++i) {
+				for (size_t i = 0; i < reference.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -227,7 +227,7 @@ TEST_CASE("DynamicArray: insert - index, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by one") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -235,7 +235,7 @@ TEST_CASE("DynamicArray: insert - index, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					if (i == index) { continue; }
 					REQUIRE(reference[i - (i > index ? 1 : 0)] == arr[i]);
 				}
@@ -254,7 +254,7 @@ TEST_CASE("DynamicArray: insert - index, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 1; i < arr.getSize(); ++i) {
+				for (size_t i = 1; i < arr.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -276,7 +276,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size increases") {
-				REQUIRE(arr.getSize() == 1);
+				REQUIRE(arr.size() == 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -292,7 +292,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size increases") {
-				REQUIRE(arr.getSize() == 1);
+				REQUIRE(arr.size() == 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -306,7 +306,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size is not changed") {
-				REQUIRE(arr.getSize() == 0);
+				REQUIRE(arr.size() == 0);
 			}
 		}
 	}
@@ -314,7 +314,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 	GIVEN("an non-empty DynamicArray") {
 		Boon::DynamicArray<int> arr{2, 4, 8, 16, 32};
 		const auto reference = arr;
-		const size_t initialSize = arr.getSize();
+		const size_t initialSize = arr.size();
 
 		WHEN("an item is inserted at the beginning") {
 			constexpr int value = 1;
@@ -326,7 +326,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by one") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -334,7 +334,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 1; i < arr.getSize(); ++i) {
+				for (size_t i = 1; i < arr.size(); ++i) {
 					REQUIRE(reference[i - 1] == arr[i]);
 				}
 			}
@@ -351,7 +351,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -359,7 +359,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < reference.getSize(); ++i) {
+				for (size_t i = 0; i < reference.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -376,7 +376,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by one") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -384,7 +384,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					if (i == index) { continue; }
 					REQUIRE(reference[i - (i > index ? 1 : 0)] == arr[i]);
 				}
@@ -403,7 +403,7 @@ TEST_CASE("DynamicArray: insert - iterator, move", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 1; i < arr.getSize(); ++i) {
+				for (size_t i = 1; i < arr.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -424,7 +424,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size increases") {
-				REQUIRE(arr.getSize() == 1);
+				REQUIRE(arr.size() == 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -440,7 +440,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size increases") {
-				REQUIRE(arr.getSize() == 1);
+				REQUIRE(arr.size() == 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -454,7 +454,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size is not changed") {
-				REQUIRE(arr.getSize() == 0);
+				REQUIRE(arr.size() == 0);
 			}
 		}
 	}
@@ -462,7 +462,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 	GIVEN("an non-empty DynamicArray") {
 		Boon::DynamicArray<int> arr{2, 4, 8, 16, 32};
 		const auto reference = arr;
-		const size_t initialSize = arr.getSize();
+		const size_t initialSize = arr.size();
 
 		WHEN("an item is inserted at the beginning") {
 			constexpr int value = 1;
@@ -473,7 +473,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by one") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -481,7 +481,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 1; i < arr.getSize(); ++i) {
+				for (size_t i = 1; i < arr.size(); ++i) {
 					REQUIRE(reference[i - 1] == arr[i]);
 				}
 			}
@@ -496,7 +496,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -504,7 +504,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < reference.getSize(); ++i) {
+				for (size_t i = 0; i < reference.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -520,7 +520,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by one") {
-				REQUIRE(arr.getSize() == initialSize + 1);
+				REQUIRE(arr.size() == initialSize + 1);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -528,7 +528,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					if (i == index) { continue; }
 					REQUIRE(reference[i - (i > index ? 1 : 0)] == arr[i]);
 				}
@@ -544,7 +544,7 @@ TEST_CASE("DynamicArray: insert - iterator", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 1; i < arr.getSize(); ++i) {
+				for (size_t i = 1; i < arr.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -568,7 +568,7 @@ TEST_CASE("DynamicArray: insert - index, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size increases") {
-				REQUIRE(arr.getSize() == count);
+				REQUIRE(arr.size() == count);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -584,7 +584,7 @@ TEST_CASE("DynamicArray: insert - index, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size is not changed") {
-				REQUIRE(arr.getSize() == 0);
+				REQUIRE(arr.size() == 0);
 			}
 		}
 	}
@@ -593,7 +593,7 @@ TEST_CASE("DynamicArray: insert - index, count", "[DynamicArray][insert]") {
 		Boon::DynamicArray<int> arr{2, 4, 8, 16, 32};
 		constexpr int count = 8;
 		const auto reference = arr;
-		const size_t initialSize = arr.getSize();
+		const size_t initialSize = arr.size();
 
 		WHEN("an item is inserted at the beginning") {
 			constexpr int value = 1;
@@ -606,7 +606,7 @@ TEST_CASE("DynamicArray: insert - index, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by count") {
-				REQUIRE(arr.getSize() == initialSize + count);
+				REQUIRE(arr.size() == initialSize + count);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -616,7 +616,7 @@ TEST_CASE("DynamicArray: insert - index, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = count; i < arr.getSize(); ++i) {
+				for (size_t i = count; i < arr.size(); ++i) {
 					REQUIRE(reference[i - count] == arr[i]);
 				}
 			}
@@ -633,7 +633,7 @@ TEST_CASE("DynamicArray: insert - index, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by count") {
-				REQUIRE(arr.getSize() == initialSize + count);
+				REQUIRE(arr.size() == initialSize + count);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -643,7 +643,7 @@ TEST_CASE("DynamicArray: insert - index, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < reference.getSize(); ++i) {
+				for (size_t i = 0; i < reference.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -661,7 +661,7 @@ TEST_CASE("DynamicArray: insert - index, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by count") {
-				REQUIRE(arr.getSize() == initialSize + count);
+				REQUIRE(arr.size() == initialSize + count);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -671,7 +671,7 @@ TEST_CASE("DynamicArray: insert - index, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					if (i >= index && i <= index + count) { continue; }
 					REQUIRE(reference[i - (i > index ? count : 0)] == arr[i]);
 				}
@@ -687,7 +687,7 @@ TEST_CASE("DynamicArray: insert - index, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 1; i < arr.getSize(); ++i) {
+				for (size_t i = 1; i < arr.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -711,7 +711,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size increases") {
-				REQUIRE(arr.getSize() == count);
+				REQUIRE(arr.size() == count);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -731,7 +731,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size increases") {
-				REQUIRE(arr.getSize() == count);
+				REQUIRE(arr.size() == count);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -747,7 +747,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size is not changed") {
-				REQUIRE(arr.getSize() == 0);
+				REQUIRE(arr.size() == 0);
 			}
 		}
 	}
@@ -756,7 +756,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 		Boon::DynamicArray<int> arr{2, 4, 8, 16, 32};
 		constexpr int count = 8;
 		const auto reference = arr;
-		const size_t initialSize = arr.getSize();
+		const size_t initialSize = arr.size();
 
 		WHEN("an item is inserted at the beginning") {
 			constexpr int value = 1;
@@ -769,7 +769,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by count") {
-				REQUIRE(arr.getSize() == initialSize + count);
+				REQUIRE(arr.size() == initialSize + count);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -779,7 +779,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = count; i < arr.getSize(); ++i) {
+				for (size_t i = count; i < arr.size(); ++i) {
 					REQUIRE(reference[i - count] == arr[i]);
 				}
 			}
@@ -796,7 +796,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by count") {
-				REQUIRE(arr.getSize() == initialSize + count);
+				REQUIRE(arr.size() == initialSize + count);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -806,7 +806,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < reference.getSize(); ++i) {
+				for (size_t i = 0; i < reference.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}
@@ -824,7 +824,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the size of the array increases by count") {
-				REQUIRE(arr.getSize() == initialSize + count);
+				REQUIRE(arr.size() == initialSize + count);
 			}
 
 			THEN("the item at that position has the corresponding value") {
@@ -834,7 +834,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					if (i >= index && i <= index + count) { continue; }
 					REQUIRE(reference[i - (i > index ? count : 0)] == arr[i]);
 				}
@@ -850,7 +850,7 @@ TEST_CASE("DynamicArray: insert - iterator, count", "[DynamicArray][insert]") {
 			}
 
 			THEN("the other items are unchanged") {
-				for (size_t i = 1; i < arr.getSize(); ++i) {
+				for (size_t i = 1; i < arr.size(); ++i) {
 					REQUIRE(reference[i] == arr[i]);
 				}
 			}

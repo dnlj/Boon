@@ -9,7 +9,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 		Boon::DynamicArray<int> arr;
 
 		THEN("the size is zero") {
-			REQUIRE(arr.getSize() == 0);
+			REQUIRE(arr.size() == 0);
 		}
 
 		WHEN("the size is set but not changed") {
@@ -18,7 +18,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 
 			THEN("the size does not change") {
 				// The size does not change
-				REQUIRE(arr.getSize() == 0);
+				REQUIRE(arr.size() == 0);
 			}
 		}
 
@@ -30,7 +30,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 
 			THEN("the size increases and new values are default initialized") {
 				// The size should increases
-				REQUIRE(arr.getSize() == newSize);
+				REQUIRE(arr.size() == newSize);
 				REQUIRE(arr.getCapacity() >= newSize);
 
 				// New values are default initialized
@@ -49,7 +49,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 
 			THEN("the size increases and new values are set") {
 				// The size increases
-				REQUIRE(arr.getSize() == newSize);
+				REQUIRE(arr.size() == newSize);
 				REQUIRE(arr.getCapacity() >= newSize);
 
 				// New values are set
@@ -68,7 +68,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 		Boon::DynamicArray<int> arr(initSize, initValue);
 
 		THEN("the size and capacity are non-zero") {
-			REQUIRE(arr.getSize() == initSize);
+			REQUIRE(arr.size() == initSize);
 			REQUIRE(arr.getCapacity() >= initSize);
 		}
 
@@ -83,11 +83,11 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 
 			THEN("the size and values do not change") {
 				// The size does not change
-				REQUIRE(arr.getSize() == arrCopy.getSize());
+				REQUIRE(arr.size() == arrCopy.size());
 				REQUIRE(arr.getCapacity() >= arrCopy.getCapacity());
 
 				// Values do not change
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(arr[i] == arrCopy[i]);
 				}
 			}
@@ -104,7 +104,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 
 			THEN ("the size increases, old values are unchanged, and new values are default initialized") {
 				// The size should increases
-				REQUIRE(arr.getSize() == newSize);
+				REQUIRE(arr.size() == newSize);
 				REQUIRE(arr.getCapacity() >= newSize);
 
 				// Old values are unchanged
@@ -131,7 +131,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 
 			THEN("the size increases, old values are unchanged, and new values are set") {
 				// The size increases
-				REQUIRE(arr.getSize() == newSize);
+				REQUIRE(arr.size() == newSize);
 				REQUIRE(arr.getCapacity() >= newSize);
 
 				// Old values are unchanged
@@ -157,7 +157,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 
 			THEN("the size decreases and old values are unchanged") {
 				// The size decreases
-				REQUIRE(arr.getSize() == newSize);
+				REQUIRE(arr.size() == newSize);
 				REQUIRE(arr.getCapacity() >= newSize);
 
 				// Old values are unchanged
@@ -179,7 +179,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 
 			THEN("the size decreases and old values are unchanged") {
 				// The size decreases
-				REQUIRE(arr.getSize() == newSize);
+				REQUIRE(arr.size() == newSize);
 				REQUIRE(arr.getCapacity() >= newSize);
 
 				// Old values are unchanged

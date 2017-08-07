@@ -9,15 +9,15 @@ TEST_CASE("DynamicArray: shrinkToFit", "[DynamicArray][shrinkToFit]") {
 		Boon::DynamicArray<int> arr;
 
 		WHEN("the array is shrunk to fit") {
-			auto size = arr.getSize();
+			auto size = arr.size();
 			arr.shrinkToFit();
 
 			THEN("the size is not changed") {
-				REQUIRE(arr.getSize() == size);
+				REQUIRE(arr.size() == size);
 			}
 
 			THEN("the capacity is equal to the size") {
-				REQUIRE(arr.getCapacity() == arr.getSize());
+				REQUIRE(arr.getCapacity() == arr.size());
 			}
 		}
 	}
@@ -26,15 +26,15 @@ TEST_CASE("DynamicArray: shrinkToFit", "[DynamicArray][shrinkToFit]") {
 		Boon::DynamicArray<int> arr{1, 2, 4 ,8 ,16};
 
 		WHEN("the array is shrunk to fit") {
-			auto size = arr.getSize();
+			auto size = arr.size();
 			arr.shrinkToFit();
 
 			THEN("the size is not changed") {
-				REQUIRE(arr.getSize() == size);
+				REQUIRE(arr.size() == size);
 			}
 
 			THEN("the capacity is equal to the size") {
-				REQUIRE(arr.getCapacity() == arr.getSize());
+				REQUIRE(arr.getCapacity() == arr.size());
 			}
 		}
 	}
@@ -45,15 +45,15 @@ TEST_CASE("DynamicArray: shrinkToFit", "[DynamicArray][shrinkToFit]") {
 		arr.reserveCapacity(capacity);
 
 		WHEN("the array is shrunk to fit") {
-			auto size = arr.getSize();
+			auto size = arr.size();
 			arr.shrinkToFit();
 
 			THEN("the size is not changed") {
-				REQUIRE(arr.getSize() == size);
+				REQUIRE(arr.size() == size);
 			}
 
 			THEN("the capacity is equal to the size") {
-				REQUIRE(arr.getCapacity() == arr.getSize());
+				REQUIRE(arr.getCapacity() == arr.size());
 			}
 		}
 	}
@@ -64,15 +64,15 @@ TEST_CASE("DynamicArray: shrinkToFit", "[DynamicArray][shrinkToFit]") {
 		arr.reserveCapacity(capacity);
 
 		WHEN("the array is shrunk to fit") {
-			auto size = arr.getSize();
+			auto size = arr.size();
 			arr.shrinkToFit();
 
 			THEN("the size is not changed") {
-				REQUIRE(arr.getSize() == size);
+				REQUIRE(arr.size() == size);
 			}
 
 			THEN("the capacity is equal to the size") {
-				REQUIRE(arr.getCapacity() == arr.getSize());
+				REQUIRE(arr.getCapacity() == arr.size());
 			}
 		}
 	}

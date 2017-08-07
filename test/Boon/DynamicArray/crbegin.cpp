@@ -21,7 +21,7 @@ TEST_CASE("DynamicArray: crbegin", "[DynamicArray][crbegin]") {
 		}
 
 		THEN("crbegin has the value of the last element in the array") {
-			REQUIRE(*arr.crbegin() == arr[arr.getSize() - 1]);
+			REQUIRE(*arr.crbegin() == arr[arr.size() - 1]);
 		}
 	}
 }

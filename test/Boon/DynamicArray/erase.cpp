@@ -28,7 +28,7 @@ TEST_CASE("DynamicArray: erase - index, range", "[DynamicArray][erase]") {
 			const auto it = arr.erase(start, end);
 			
 			THEN("the elements in the range are removed") {
-				REQUIRE(arr.getSize() == 2);
+				REQUIRE(arr.size() == 2);
 				REQUIRE(arr[0] == 1);
 				REQUIRE(arr[1] == 32);
 			}
@@ -40,11 +40,11 @@ TEST_CASE("DynamicArray: erase - index, range", "[DynamicArray][erase]") {
 
 		WHEN("erase is called over the whole range") {
 			constexpr size_t start = 0;
-			const size_t end = arr.getSize();
+			const size_t end = arr.size();
 			const auto it = arr.erase(start, end);
 
 			THEN("the elements in the range are removed") {
-				REQUIRE(arr.getSize() == 0);
+				REQUIRE(arr.size() == 0);
 			}
 
 			THEN("the returned iterator is end()") {
@@ -60,9 +60,9 @@ TEST_CASE("DynamicArray: erase - index, range", "[DynamicArray][erase]") {
 				REQUIRE_THROWS(arr.erase(start, end));
 
 				THEN("the elements in the array are not modified") {
-					REQUIRE(arr.getSize() == arr_reference.getSize());
+					REQUIRE(arr.size() == arr_reference.size());
 
-					for (size_t i = 0; i < arr.getSize(); ++i) {
+					for (size_t i = 0; i < arr.size(); ++i) {
 						REQUIRE(arr[i] == arr_reference[i]);
 					}
 				}
@@ -77,9 +77,9 @@ TEST_CASE("DynamicArray: erase - index, range", "[DynamicArray][erase]") {
 				REQUIRE_THROWS(arr.erase(start, end));
 
 				THEN("the elements in the array are not modified") {
-					REQUIRE(arr.getSize() == arr_reference.getSize());
+					REQUIRE(arr.size() == arr_reference.size());
 
-					for (size_t i = 0; i < arr.getSize(); ++i) {
+					for (size_t i = 0; i < arr.size(); ++i) {
 						REQUIRE(arr[i] == arr_reference[i]);
 					}
 				}
@@ -94,9 +94,9 @@ TEST_CASE("DynamicArray: erase - index, range", "[DynamicArray][erase]") {
 				REQUIRE_THROWS(arr.erase(start, end));
 
 				THEN("the elements in the array are not modified") {
-					REQUIRE(arr.getSize() == arr_reference.getSize());
+					REQUIRE(arr.size() == arr_reference.size());
 
-					for (size_t i = 0; i < arr.getSize(); ++i) {
+					for (size_t i = 0; i < arr.size(); ++i) {
 						REQUIRE(arr[i] == arr_reference[i]);
 					}
 				}
@@ -126,8 +126,8 @@ TEST_CASE("DynamicArray: erase - index", "[DynamicArray][erase]") {
 			const auto it = arr.erase(index);
 
 			THEN("the element is removed and the other elements are unchanged") {
-				REQUIRE(arr.getSize() == arr_reference.getSize() - 1);
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				REQUIRE(arr.size() == arr_reference.size() - 1);
+				for (size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(arr[i] ==  arr_reference[i >= index ? i + 1 : i]);
 				}
 			}
@@ -138,15 +138,15 @@ TEST_CASE("DynamicArray: erase - index", "[DynamicArray][erase]") {
 		}
 
 		WHEN("erase is called with a invalid index") {
-			const size_t index = arr.getSize();
+			const size_t index = arr.size();
 
 			THEN("an exception is thrown") {
 				REQUIRE_THROWS(arr.erase(index));
 
 				THEN("the elements in the array are not modified") {
-					REQUIRE(arr.getSize() == arr_reference.getSize());
+					REQUIRE(arr.size() == arr_reference.size());
 
-					for (size_t i = 0; i < arr.getSize(); ++i) {
+					for (size_t i = 0; i < arr.size(); ++i) {
 						REQUIRE(arr[i] == arr_reference[i]);
 					}
 				}
@@ -177,9 +177,9 @@ TEST_CASE("DynamicArray: erase - iterator", "[DynamicArray][erase]") {
 			const auto ret = arr.erase(it);
 
 			THEN("the element is removed and the other elements are unchanged") {
-				REQUIRE(arr.getSize() == arr_reference.getSize() - 1);
+				REQUIRE(arr.size() == arr_reference.size() - 1);
 
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(arr[i] == arr_reference[i >= index ? i + 1 : i]);
 				}
 			}
@@ -197,9 +197,9 @@ TEST_CASE("DynamicArray: erase - iterator", "[DynamicArray][erase]") {
 				REQUIRE_THROWS(arr.erase(it));
 
 				THEN("the elements in the array are not modified") {
-					REQUIRE(arr.getSize() == arr_reference.getSize());
+					REQUIRE(arr.size() == arr_reference.size());
 
-					for (size_t i = 0; i < arr.getSize(); ++i) {
+					for (size_t i = 0; i < arr.size(); ++i) {
 						REQUIRE(arr[i] == arr_reference[i]);
 					}
 				}
@@ -232,7 +232,7 @@ TEST_CASE("DynamicArray: erase - iterator, range", "[DynamicArray][erase]") {
 			const auto it = arr.erase(start, end);
 
 			THEN("the elements in the range are removed") {
-				REQUIRE(arr.getSize() == 2);
+				REQUIRE(arr.size() == 2);
 				REQUIRE(arr[0] == 1);
 				REQUIRE(arr[1] == 32);
 			}
@@ -248,7 +248,7 @@ TEST_CASE("DynamicArray: erase - iterator, range", "[DynamicArray][erase]") {
 			const auto it = arr.erase(start, end);
 
 			THEN("the elements in the range are removed") {
-				REQUIRE(arr.getSize() == 0);
+				REQUIRE(arr.size() == 0);
 			}
 
 			THEN("the returned iterator is end()") {
@@ -264,9 +264,9 @@ TEST_CASE("DynamicArray: erase - iterator, range", "[DynamicArray][erase]") {
 				REQUIRE_THROWS(arr.erase(start, end));
 
 				THEN("the elements in the array are not modified") {
-					REQUIRE(arr.getSize() == arr_reference.getSize());
+					REQUIRE(arr.size() == arr_reference.size());
 
-					for (size_t i = 0; i < arr.getSize(); ++i) {
+					for (size_t i = 0; i < arr.size(); ++i) {
 						REQUIRE(arr[i] == arr_reference[i]);
 					}
 				}
@@ -281,9 +281,9 @@ TEST_CASE("DynamicArray: erase - iterator, range", "[DynamicArray][erase]") {
 				REQUIRE_THROWS(arr.erase(start, end));
 
 				THEN("the elements in the array are not modified") {
-					REQUIRE(arr.getSize() == arr_reference.getSize());
+					REQUIRE(arr.size() == arr_reference.size());
 
-					for (size_t i = 0; i < arr.getSize(); ++i) {
+					for (size_t i = 0; i < arr.size(); ++i) {
 						REQUIRE(arr[i] == arr_reference[i]);
 					}
 				}
@@ -298,9 +298,9 @@ TEST_CASE("DynamicArray: erase - iterator, range", "[DynamicArray][erase]") {
 				REQUIRE_THROWS(arr.erase(start, end));
 
 				THEN("the elements in the array are not modified") {
-					REQUIRE(arr.getSize() == arr_reference.getSize());
+					REQUIRE(arr.size() == arr_reference.size());
 
-					for (size_t i = 0; i < arr.getSize(); ++i) {
+					for (size_t i = 0; i < arr.size(); ++i) {
 						REQUIRE(arr[i] == arr_reference[i]);
 					}
 				}

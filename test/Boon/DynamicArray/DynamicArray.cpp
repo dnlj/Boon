@@ -9,7 +9,7 @@ TEST_CASE("DynamicArray: default constructor", "[DynamicArray]") {
 		Boon::DynamicArray<int> arr;
 
 		THEN("the size is zero") {
-			REQUIRE(arr.getSize() == 0);
+			REQUIRE(arr.size() == 0);
 		}
 
 		THEN("the capacity is zero") {
@@ -28,11 +28,11 @@ TEST_CASE("DynamicArray: size constructor", "[DynamicArray]") {
 			Boon::DynamicArray<int> arr(size);
 
 			THEN("the size is the size that was passed to it") {
-				REQUIRE(arr.getSize() == size);
+				REQUIRE(arr.size() == size);
 			}
 		
 			THEN("the capacity is at least as large as the size") {
-				REQUIRE(arr.getCapacity() >= arr.getSize());
+				REQUIRE(arr.getCapacity() >= arr.size());
 			}
 		}
 
@@ -44,15 +44,15 @@ TEST_CASE("DynamicArray: size constructor", "[DynamicArray]") {
 			Boon::DynamicArray<int> arr(size, value);
 
 			THEN("the size is the size that was passed to it") {
-				REQUIRE(arr.getSize() == size);
+				REQUIRE(arr.size() == size);
 			}
 
 			THEN("the capacity is at least as large as the size") {
-				REQUIRE(arr.getCapacity() >= arr.getSize());
+				REQUIRE(arr.getCapacity() >= arr.size());
 			}
 
 			THEN("each element has been initialized to the value passed") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(arr[i] == value);
 				}
 			}
@@ -69,15 +69,15 @@ TEST_CASE("DynamicArray: list initialization constructor", "[DynamicArray]") {
 		Boon::DynamicArray<int> arr = {1, 2, 4, 8, 16, 32, 64, 128, 256};
 
 		THEN("the size is equal to the number of item in the initialization list") {
-			REQUIRE(arr.getSize() == size);
+			REQUIRE(arr.size() == size);
 		}
 
 		THEN("the capacity is at least as large as the size") {
-			REQUIRE(arr.getCapacity() >= arr.getSize());
+			REQUIRE(arr.getCapacity() >= arr.size());
 		}
 
 		THEN("each element has been initialized to the appropriate value") {
-			for (size_t i = 0; i < arr.getSize(); ++i) {
+			for (size_t i = 0; i < arr.size(); ++i) {
 				int value = 1 << i;
 				REQUIRE(arr[i] == value);
 			}
@@ -97,7 +97,7 @@ TEST_CASE("DynamicArray: copy constructor", "[DynamicArray]") {
 			Boon::DynamicArray<int> arr(toCopy);
 
 			THEN("the sizes of both arrays are the equal") {
-				REQUIRE(toCopy.getSize() == arr.getSize());
+				REQUIRE(toCopy.size() == arr.size());
 			}
 
 			THEN("the arrays do not point to the same internal array") {
@@ -105,7 +105,7 @@ TEST_CASE("DynamicArray: copy constructor", "[DynamicArray]") {
 			}
 
 			THEN("the contents of both arrays are equal") {
-				for (int i = 0; i < arr.getSize(); ++i) {
+				for (int i = 0; i < arr.size(); ++i) {
 					REQUIRE(toCopy[i] == arr[i]);
 				}
 			}
@@ -124,7 +124,7 @@ TEST_CASE("DynamicArray: move constructor", "[DynamicArray]") {
 		WHEN("an array is move constructed from it") {
 
 			// Since we are using a move constructor we need to get these values before the move
-			const auto toCopySize = toCopy.getSize();
+			const auto toCopySize = toCopy.size();
 			const auto toCopyCapacity = toCopy.getCapacity();
 			const auto toCopyData = &toCopy[0];
 
@@ -132,7 +132,7 @@ TEST_CASE("DynamicArray: move constructor", "[DynamicArray]") {
 			Boon::DynamicArray<int> arr(std::move(toCopy));
 
 			THEN("the size of the moved to array is equal to the size of the moved array") {
-				REQUIRE(arr.getSize() == toCopySize);
+				REQUIRE(arr.size() == toCopySize);
 			}
 
 			THEN("the capacity of the moved to array is equal to the capacity of the moved array") {
@@ -160,14 +160,14 @@ TEST_CASE("DynamicArray: move assignment operator", "[DynamicArray]") {
 
 			{ // This is to ensure that arr.data isnt deleted when toCopy is deconstructed
 				decltype(arr) toCopy{64, 32, 16, 8, 4, 2, 1};
-				size = toCopy.getSize();
+				size = toCopy.size();
 				internalArr = &toCopy[0];
 
 				arr = std::move(toCopy);
 			}
 
 			THEN("the sizes of both arrays are the equal") {
-				REQUIRE(size == arr.getSize());
+				REQUIRE(size == arr.size());
 			}
 
 			THEN("the arrays point to the same internal array") {
@@ -186,7 +186,7 @@ TEST_CASE("DynamicArray: copy assignment operator", "[DynamicArray]") {
 			arr = toCopy;
 
 			THEN("the sizes of both arrays are the equal") {
-				REQUIRE(toCopy.getSize() == arr.getSize());
+				REQUIRE(toCopy.size() == arr.size());
 			}
 
 			THEN("the arrays do not point to the same internal array") {
@@ -194,7 +194,7 @@ TEST_CASE("DynamicArray: copy assignment operator", "[DynamicArray]") {
 			}
 
 			THEN("the contents of both arrays are equal") {
-				for (int i = 0; i < arr.getSize(); ++i) {
+				for (int i = 0; i < arr.size(); ++i) {
 					REQUIRE(toCopy[i] == arr[i]);
 				}
 			}
@@ -264,7 +264,7 @@ TEST_CASE("DynamicArray: operator[]", "[DynamicArray]") {
 
 		WHEN("we read via the subscript operator") {
 			THEN("all value are at the expected index") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(arr[i] == 1 << i);
 				}
 			}
@@ -287,7 +287,7 @@ TEST_CASE("DynamicArray: operator[] const", "[DynamicArray]") {
 
 		WHEN("we read via the subscript operator") {
 			THEN("all value are at the expected index") {
-				for (size_t i = 0; i < arr.getSize(); ++i) {
+				for (size_t i = 0; i < arr.size(); ++i) {
 					REQUIRE(arr[i] == 1 << i);
 				}
 			}

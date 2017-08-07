@@ -13,7 +13,7 @@ TEST_CASE("DynamicArray: pushBack", "[DynamicArray][pushBack]") {
 			arr.pushBack(value);
 
 			THEN("the size of the array is increased") {
-				REQUIRE(arr.getSize() == 1);
+				REQUIRE(arr.size() == 1);
 			}
 
 			THEN("the value in the array is equal to the value that was pushed back") {
@@ -31,15 +31,15 @@ TEST_CASE("DynamicArray: pushBack", "[DynamicArray][pushBack]") {
 			arr.pushBack(value);
 
 			THEN("the size of the array is increased") {
-				REQUIRE(arr.getSize() == copy.getSize() + 1);
+				REQUIRE(arr.size() == copy.size() + 1);
 			}
 
 			THEN("the value in the array is equal to the value that was pushed back") {
-				REQUIRE(arr[arr.getSize() - 1] == value);
+				REQUIRE(arr[arr.size() - 1] == value);
 			}
 
 			THEN("the other values in the array are not modified") {
-				for (int i = 0; i < copy.getSize(); ++i) {
+				for (int i = 0; i < copy.size(); ++i) {
 					REQUIRE(copy[i] == arr[i]);
 				}
 			}
@@ -56,7 +56,7 @@ TEST_CASE("DynamicArray: pushBack - move", "[DynamicArray][pushBack]") {
 			arr.pushBack(std::move(value));
 
 			THEN("the size of the array is increased") {
-				REQUIRE(arr.getSize() == 1);
+				REQUIRE(arr.size() == 1);
 			}
 
 			THEN("the value in the array is equal to the value that was pushed back") {
@@ -74,15 +74,15 @@ TEST_CASE("DynamicArray: pushBack - move", "[DynamicArray][pushBack]") {
 			arr.pushBack(std::move(value));
 
 			THEN("the size of the array is increased") {
-				REQUIRE(arr.getSize() == copy.getSize() + 1);
+				REQUIRE(arr.size() == copy.size() + 1);
 			}
 
 			THEN("the value in the array is equal to the value that was pushed back") {
-				REQUIRE(arr[arr.getSize() - 1] == value);
+				REQUIRE(arr[arr.size() - 1] == value);
 			}
 
 			THEN("the other values in the array are not modified") {
-				for (int i = 0; i < copy.getSize(); ++i) {
+				for (int i = 0; i < copy.size(); ++i) {
 					REQUIRE(copy[i] == arr[i]);
 				}
 			}
