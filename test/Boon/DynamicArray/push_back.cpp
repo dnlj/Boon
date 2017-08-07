@@ -4,13 +4,13 @@
 // Boon
 #include <Boon/DynamicArray.hpp>
 
-TEST_CASE("DynamicArray: pushBack", "[DynamicArray][pushBack]") {
+TEST_CASE("DynamicArray: push_back", "[DynamicArray][push_back]") {
 	GIVEN("an empty DynamicArray") {
 		Boon::DynamicArray<int> arr;
 
 		WHEN("an value is pushed back") {
 			constexpr int value = 32;
-			arr.pushBack(value);
+			arr.push_back(value);
 
 			THEN("the size of the array is increased") {
 				REQUIRE(arr.size() == 1);
@@ -28,7 +28,7 @@ TEST_CASE("DynamicArray: pushBack", "[DynamicArray][pushBack]") {
 
 		WHEN("an value is pushed back") {
 			constexpr int value = 32;
-			arr.pushBack(value);
+			arr.push_back(value);
 
 			THEN("the size of the array is increased") {
 				REQUIRE(arr.size() == copy.size() + 1);
@@ -47,13 +47,13 @@ TEST_CASE("DynamicArray: pushBack", "[DynamicArray][pushBack]") {
 	}
 }
 
-TEST_CASE("DynamicArray: pushBack - move", "[DynamicArray][pushBack]") {
+TEST_CASE("DynamicArray: push_back - move", "[DynamicArray][push_back]") {
 	GIVEN("an empty DynamicArray") {
 		Boon::DynamicArray<int> arr;
 
 		WHEN("an value is pushed back") {
 			int value = 32;
-			arr.pushBack(std::move(value));
+			arr.push_back(std::move(value));
 
 			THEN("the size of the array is increased") {
 				REQUIRE(arr.size() == 1);
@@ -71,7 +71,7 @@ TEST_CASE("DynamicArray: pushBack - move", "[DynamicArray][pushBack]") {
 
 		WHEN("an value is pushed back") {
 			int value = 32;
-			arr.pushBack(std::move(value));
+			arr.push_back(std::move(value));
 
 			THEN("the size of the array is increased") {
 				REQUIRE(arr.size() == copy.size() + 1);

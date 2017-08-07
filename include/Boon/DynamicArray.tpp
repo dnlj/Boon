@@ -355,12 +355,12 @@ namespace Boon {
 	}
 
 	template<class T>
-	void DynamicArray<T>::pushBack(const T& value) {
+	void DynamicArray<T>::push_back(const T& value) {
 		insert(end(), value);
 	}
 
 	template<class T>
-	void DynamicArray<T>::pushBack(T&& value) {
+	void DynamicArray<T>::push_back(T&& value) {
 		reserve(data_size + 1);
 		data_array[data_size] = std::move(value);
 		++data_size;

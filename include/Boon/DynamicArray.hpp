@@ -364,14 +364,14 @@ namespace Boon {
 			 * @param[in] value The value to insert at the end of the array.
 			 * @return void
 			 */
-			void pushBack(const T& value);
+			void push_back(const T& value);
 
 			/**
 			 * @brief Move the p@ value to the end of the array.
 			 * @param[in] value The value to move to the end of the array.
 			 * @return void
 			 */
-			void pushBack(T&& value);
+			void push_back(T&& value);
 
 			/**
 			 * @brief Removes elements in the range [@p beginIndex, @p endIndex).
