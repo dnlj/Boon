@@ -10,7 +10,7 @@ namespace Boon {
 	void swap(DynamicArray<T>& first, DynamicArray<T>& second) noexcept {
 		using std::swap;
 		swap(first.data_size, second.data_size);
-		swap(first.capacity, second.capacity);
+		swap(first.data_capacity, second.data_capacity);
 		swap(first.data, second.data);
 	}
 }
@@ -185,7 +185,7 @@ namespace Boon {
 	template<class T>
 	DynamicArray<T>::DynamicArray(const DynamicArray<T>& other) :
 		data_size{other.data_size},
-		capacity{data_size},
+		data_capacity{data_size},
 		data{new T[data_size]} {
 
 		Boon::copy(other.data, other.data + other.data_size, data);
@@ -198,7 +198,7 @@ namespace Boon {
 
 	template<class T>
 	DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T>& other) {
-		if (capacity >= other.data_size) {
+		if (data_capacity >= other.data_size) {
 			data_size = other.data_size;
 			Boon::copy(other.data, other.data + other.data_size, data);
 		} else {
@@ -256,7 +256,7 @@ namespace Boon {
 	template<class T>
 	void DynamicArray<T>::reserveCapacity(size_t capacity) {
 		// Check to see if the array need to be resized
-		if (this->capacity >= capacity) { return; }
+		if (data_capacity >= capacity) { return; }
 
 		// Create the new array
 		T* newData = new T[capacity];
@@ -269,7 +269,7 @@ namespace Boon {
 
 		// Update variables
 		data = newData;
-		this->capacity = capacity;
+		data_capacity = capacity;
 	}
 
 	template<class T>
@@ -414,7 +414,7 @@ namespace Boon {
 	void DynamicArray<T>::clear() {
 		delete[] data;
 		data_size = 0;
-		data = new T[capacity];
+		data = new T[data_capacity];
 	}
 
 	template<class T>
@@ -423,7 +423,7 @@ namespace Boon {
 		Boon::copy(data, data + data_size, newData);
 		delete[] data;
 		data = newData;
-		capacity = data_size;
+		data_capacity = data_size;
 	}
 	
 	template<class T>
@@ -433,7 +433,7 @@ namespace Boon {
 
 	template<class T>
 	inline size_t DynamicArray<T>::getCapacity() const {
-		return capacity;
+		return data_capacity;
 	}
 
 	template<class T>

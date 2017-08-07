@@ -549,7 +549,7 @@ namespace Boon {
 			size_t data_size = 0;
 
 			/** Stores the capacity of the array */
-			size_t capacity = 0;
+			size_t data_capacity = 0;
 
 			/** The internal array */
 			T* data = nullptr;
