@@ -418,7 +418,7 @@ namespace Boon {
 	}
 
 	template<class T>
-	void DynamicArray<T>::shrinkToFit() {
+	void DynamicArray<T>::shrink_to_fit() {
 		T* newData = new T[data_size];
 		Boon::copy(data_array, data_array + data_size, newData);
 		delete[] data_array;

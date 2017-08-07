@@ -4,13 +4,13 @@
 // Boon
 #include <Boon/DynamicArray.hpp>
 
-TEST_CASE("DynamicArray: shrinkToFit", "[DynamicArray][shrinkToFit]") {
+TEST_CASE("DynamicArray: shrink_to_fit", "[DynamicArray][shrink_to_fit]") {
 	GIVEN("an empty DynamicArray") {
 		Boon::DynamicArray<int> arr;
 
 		WHEN("the array is shrunk to fit") {
 			auto size = arr.size();
-			arr.shrinkToFit();
+			arr.shrink_to_fit();
 
 			THEN("the size is not changed") {
 				REQUIRE(arr.size() == size);
@@ -27,7 +27,7 @@ TEST_CASE("DynamicArray: shrinkToFit", "[DynamicArray][shrinkToFit]") {
 
 		WHEN("the array is shrunk to fit") {
 			auto size = arr.size();
-			arr.shrinkToFit();
+			arr.shrink_to_fit();
 
 			THEN("the size is not changed") {
 				REQUIRE(arr.size() == size);
@@ -46,7 +46,7 @@ TEST_CASE("DynamicArray: shrinkToFit", "[DynamicArray][shrinkToFit]") {
 
 		WHEN("the array is shrunk to fit") {
 			auto size = arr.size();
-			arr.shrinkToFit();
+			arr.shrink_to_fit();
 
 			THEN("the size is not changed") {
 				REQUIRE(arr.size() == size);
@@ -65,7 +65,7 @@ TEST_CASE("DynamicArray: shrinkToFit", "[DynamicArray][shrinkToFit]") {
 
 		WHEN("the array is shrunk to fit") {
 			auto size = arr.size();
-			arr.shrinkToFit();
+			arr.shrink_to_fit();
 
 			THEN("the size is not changed") {
 				REQUIRE(arr.size() == size);

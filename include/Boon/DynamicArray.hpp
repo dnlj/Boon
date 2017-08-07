@@ -427,7 +427,7 @@ namespace Boon {
 			 * @brief Shrinks capacity to size.
 			 * @return void
 			 */
-			void shrinkToFit();
+			void shrink_to_fit();
 			
 			/**
 			 * @brief Gets the size of the Boon::DynamicArray.
