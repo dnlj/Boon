@@ -4,7 +4,7 @@
 // Boon
 #include <Boon/DynamicArray.hpp>
 
-TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
+TEST_CASE("DynamicArray: reserve", "[DynamicArray][reserverCapacity]") {
 	GIVEN("an empty DynamicArray") {
 		Boon::DynamicArray<int> arr;
 
@@ -18,7 +18,7 @@ TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
 			// Make sure there was not an overflow
 			REQUIRE(capacity > arr.capacity());
 
-			arr.reserveCapacity(capacity);
+			arr.reserve(capacity);
 
 			THEN("the capacity is greater than or equal to the reserved capacity") {
 				REQUIRE(arr.capacity() >= capacity);
@@ -27,7 +27,7 @@ TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
 
 		WHEN("capacity is reserved equal to current capacity") {
 			const auto capacity = arr.capacity();
-			arr.reserveCapacity(capacity);
+			arr.reserve(capacity);
 
 			THEN("the capacity is not changed") {
 				REQUIRE(arr.capacity() == capacity);
@@ -48,7 +48,7 @@ TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
 			// Make sure there was not an overflow
 			REQUIRE(capacity > arr.capacity());
 
-			arr.reserveCapacity(capacity);
+			arr.reserve(capacity);
 
 			THEN("the capacity is greater than or equal to the reserved capacity") {
 				REQUIRE(arr.capacity() >= capacity);
@@ -57,7 +57,7 @@ TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
 
 		WHEN("capacity is reserved equal to current capacity") {
 			const auto capacity = arr.capacity();
-			arr.reserveCapacity(capacity);
+			arr.reserve(capacity);
 
 			THEN("the capacity is not changed") {
 				REQUIRE(arr.capacity() == capacity);
@@ -71,7 +71,7 @@ TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
 			// Make sure there was not an overflow
 			REQUIRE(capacity < originalCapacity);
 
-			arr.reserveCapacity(capacity);
+			arr.reserve(capacity);
 
 			THEN("the capacity is not changed") {
 				REQUIRE(arr.capacity() == originalCapacity);

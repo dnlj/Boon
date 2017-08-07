@@ -172,12 +172,12 @@ namespace Boon {
 
 	template<class T>
 	DynamicArray<T>::DynamicArray(size_t size, const T& value) {
-		setSize(size, value);
+		resize(size, value);
 	}
 
 	template<class T>
 	DynamicArray<T>::DynamicArray(std::initializer_list<T> list) {
-		reserveCapacity(list.size());
+		reserve(list.size());
 		Boon::copy(list.begin(), list.end(), data_array);
 		data_size = list.size();
 	}
@@ -254,7 +254,7 @@ namespace Boon {
 	}
 
 	template<class T>
-	void DynamicArray<T>::reserveCapacity(size_t capacity) {
+	void DynamicArray<T>::reserve(size_t capacity) {
 		// Check to see if the array need to be resized
 		if (data_capacity >= capacity) { return; }
 
@@ -273,9 +273,9 @@ namespace Boon {
 	}
 
 	template<class T>
-	void DynamicArray<T>::setSize(size_t size, const T& value = T{}) {
+	void DynamicArray<T>::resize(size_t size, const T& value = T{}) {
 		// Make sure we have enough capacity
-		reserveCapacity(size);
+		reserve(size);
 
 		// Fill any uninitialized indicies with value
 		for (size_t i = data_size; i < size; ++i) {
@@ -299,7 +299,7 @@ namespace Boon {
 		}
 
 		// Reserver the additional capacity
-		reserveCapacity(data_size + 1);
+		reserve(data_size + 1);
 
 		// Shift values
 		for (size_t i = data_size; i > index; --i) {
@@ -332,7 +332,7 @@ namespace Boon {
 		}
 
 		// Reserver the additional capacity
-		reserveCapacity(data_size + count);
+		reserve(data_size + count);
 
 		// Shift values
 		for (size_t i = data_size + count - 1; i > index; --i) {
@@ -361,7 +361,7 @@ namespace Boon {
 
 	template<class T>
 	void DynamicArray<T>::pushBack(T&& value) {
-		reserveCapacity(data_size + 1);
+		reserve(data_size + 1);
 		data_array[data_size] = std::move(value);
 		++data_size;
 	}

@@ -42,7 +42,7 @@ TEST_CASE("DynamicArray: shrink_to_fit", "[DynamicArray][shrink_to_fit]") {
 	GIVEN("an empty reserved DynamicArray") {
 		constexpr size_t capacity = 32;
 		Boon::DynamicArray<int> arr;
-		arr.reserveCapacity(capacity);
+		arr.reserve(capacity);
 
 		WHEN("the array is shrunk to fit") {
 			auto size = arr.size();
@@ -61,7 +61,7 @@ TEST_CASE("DynamicArray: shrink_to_fit", "[DynamicArray][shrink_to_fit]") {
 	GIVEN("an non-empty reserved DynamicArray") {
 		constexpr size_t capacity = 32;
 		Boon::DynamicArray<int> arr{1, 2, 4 ,8 ,16};
-		arr.reserveCapacity(capacity);
+		arr.reserve(capacity);
 
 		WHEN("the array is shrunk to fit") {
 			auto size = arr.size();

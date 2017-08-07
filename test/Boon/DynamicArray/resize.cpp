@@ -4,7 +4,7 @@
 // Boon
 #include <Boon/DynamicArray.hpp>
 
-TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
+TEST_CASE("DynamicArray: resize", "[DynamicArray][resize]") {
 	GIVEN("an empty DynamicArray") {
 		Boon::DynamicArray<int> arr;
 
@@ -14,7 +14,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 
 		WHEN("the size is set but not changed") {
 			// Set our new size
-			arr.setSize(0);
+			arr.resize(0);
 
 			THEN("the size does not change") {
 				// The size does not change
@@ -26,7 +26,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 			constexpr size_t newSize = 16;
 
 			// Set our new size
-			arr.setSize(newSize);
+			arr.resize(newSize);
 
 			THEN("the size increases and new values are default initialized") {
 				// The size should increases
@@ -45,7 +45,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 			constexpr int newValue = -64;
 
 			// Set our new size
-			arr.setSize(newSize, newValue);
+			arr.resize(newSize, newValue);
 
 			THEN("the size increases and new values are set") {
 				// The size increases
@@ -79,7 +79,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 			auto arrCopy = arr;
 
 			// Set our new size
-			arr.setSize(newSize);
+			arr.resize(newSize);
 
 			THEN("the size and values do not change") {
 				// The size does not change
@@ -100,7 +100,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 			REQUIRE(newSize > initSize);
 
 			// Set our new size
-			arr.setSize(newSize);
+			arr.resize(newSize);
 
 			THEN ("the size increases, old values are unchanged, and new values are default initialized") {
 				// The size should increases
@@ -127,7 +127,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 			REQUIRE(newSize > initSize);
 
 			// Set our new size
-			arr.setSize(newSize, newValue);
+			arr.resize(newSize, newValue);
 
 			THEN("the size increases, old values are unchanged, and new values are set") {
 				// The size increases
@@ -153,7 +153,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 			REQUIRE(newSize < initSize);
 
 			// Set our new size
-			arr.setSize(newSize);
+			arr.resize(newSize);
 
 			THEN("the size decreases and old values are unchanged") {
 				// The size decreases
@@ -175,7 +175,7 @@ TEST_CASE("DynamicArray: setSize", "[DynamicArray][setSize]") {
 			REQUIRE(newSize < initSize);
 
 			// Set our new size
-			arr.setSize(newSize, newValue);
+			arr.resize(newSize, newValue);
 
 			THEN("the size decreases and old values are unchanged") {
 				// The size decreases

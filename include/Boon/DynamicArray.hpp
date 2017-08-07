@@ -292,7 +292,7 @@ namespace Boon {
 			 * @param[in] capacity The capacity to reserve.
 			 * @return void
 			 */
-			void reserveCapacity(size_t capacity);
+			void reserve(size_t capacity);
 
 			/**
 			 * @brief Sets the size of the Boon::DynamicArray.
@@ -301,7 +301,7 @@ namespace Boon {
 			 * @param[in] value The default value for new indices.
 			 * @return void
 			 */
-			void setSize(size_t size, const T& value = T{});
+			void resize(size_t size, const T& value = T{});
 
 			/**
 			 * @brief Inserts the value @p value into the index @p index.
