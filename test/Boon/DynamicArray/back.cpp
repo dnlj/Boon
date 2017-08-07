@@ -4,13 +4,13 @@
 // Boon
 #include <Boon/DynamicArray.hpp>
 
-TEST_CASE("DynamicArray: getBack", "[DynamicArray][getBack]") {
+TEST_CASE("DynamicArray: back", "[DynamicArray][back]") {
 	GIVEN("an empty DynamicArray") {
 		Boon::DynamicArray<int> arr;
 
-		WHEN("getBack is called") {
+		WHEN("back is called") {
 			THEN("and exception is thrown") {
-				REQUIRE_THROWS_AS(arr.getBack(), std::out_of_range);
+				REQUIRE_THROWS_AS(arr.back(), std::out_of_range);
 			}
 		}
 	}
@@ -18,21 +18,21 @@ TEST_CASE("DynamicArray: getBack", "[DynamicArray][getBack]") {
 	GIVEN("an non-empty DynamicArray") {
 		Boon::DynamicArray<int> arr{1, 2, 4, 8, 16};
 
-		WHEN("getBack is called") {
+		WHEN("back is called") {
 			THEN("the last element of the array is returned") {
-				REQUIRE(arr.getBack() == 16);
+				REQUIRE(arr.back() == 16);
 			}
 		}
 	}
 }
 
-TEST_CASE("DynamicArray: getBack - const", "[DynamicArray][getBack]") {
+TEST_CASE("DynamicArray: back - const", "[DynamicArray][back]") {
 	GIVEN("an empty DynamicArray") {
 		const Boon::DynamicArray<int> arr;
 
-		WHEN("getBack is called") {
+		WHEN("back is called") {
 			THEN("and exception is thrown") {
-				REQUIRE_THROWS_AS(arr.getBack(), std::out_of_range);
+				REQUIRE_THROWS_AS(arr.back(), std::out_of_range);
 			}
 		}
 	}
@@ -40,9 +40,9 @@ TEST_CASE("DynamicArray: getBack - const", "[DynamicArray][getBack]") {
 	GIVEN("an non-empty DynamicArray") {
 		const Boon::DynamicArray<int> arr{1, 2, 4, 8, 16};
 
-		WHEN("getBack is called") {
+		WHEN("back is called") {
 			THEN("the last element of the array is returned") {
-				REQUIRE(arr.getBack() == 16);
+				REQUIRE(arr.back() == 16);
 			}
 		}
 	}

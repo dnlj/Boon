@@ -462,10 +462,10 @@ namespace Boon {
 			 * @return The last element in the Boon::DynamicArray
 			 * @throws std::out_of_range When called on an empty array.
 			 */
-			T& getBack();
+			T& back();
 
-			/** @copydoc Boon::DynamicArray::getBack */
-			const T& getBack() const;
+			/** @copydoc Boon::DynamicArray::back */
+			const T& back() const;
 			
 			/**
 			 * @brief Gets the element at @p index in the Boon::DynamicArray.
