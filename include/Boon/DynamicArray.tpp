@@ -45,6 +45,7 @@ namespace Boon {
 	template<bool IsConst>
 	DynamicArray<T>::IteratorBase<IsConst>& DynamicArray<T>::IteratorBase<IsConst>::operator=(IteratorBase other) {
 		swap(*this, other);
+		return *this;
 	}
 
 	template<class T>
