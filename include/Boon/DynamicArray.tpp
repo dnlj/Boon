@@ -442,18 +442,18 @@ namespace Boon {
 	}
 
 	template<class T>
-	T& DynamicArray<T>::getFront() {
+	T& DynamicArray<T>::front() {
 		if (isEmpty()) {
-			throw std::out_of_range("Boon::DynamicArray<T>::getFront was called on an empty array.");
+			throw std::out_of_range("Boon::DynamicArray<T>::front was called on an empty array.");
 		}
 
 		return data_array[0];
 	}
 
 	template<class T>
-	const T& DynamicArray<T>::getFront() const {
+	const T& DynamicArray<T>::front() const {
 		if (isEmpty()) {
-			throw std::out_of_range("Boon::DynamicArray<T>::getFront was called on an empty array.");
+			throw std::out_of_range("Boon::DynamicArray<T>::front was called on an empty array.");
 		}
 	
 		return data_array[0];

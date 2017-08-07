@@ -452,10 +452,10 @@ namespace Boon {
 			 * @return The first element in the Boon::DynamicArray
 			 * @throws std::out_of_range When called on an empty array.
 			 */
-			T& getFront();
+			T& front();
 
-			/** @copydoc Boon::DynamicArray::getFront */
-			const T& getFront() const;
+			/** @copydoc Boon::DynamicArray::front */
+			const T& front() const;
 
 			/**
 			 * @brief Gets the last element in the Boon::DynamicArray.

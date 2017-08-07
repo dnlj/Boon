@@ -4,13 +4,13 @@
 // Boon
 #include <Boon/DynamicArray.hpp>
 
-TEST_CASE("DynamicArray: getFront", "[DynamicArray][getFront]") {
+TEST_CASE("DynamicArray: front", "[DynamicArray][front]") {
 	GIVEN("an empty DynamicArray") {
 		Boon::DynamicArray<int> arr;
 
-		WHEN("getFront is called") {
+		WHEN("front is called") {
 			THEN("and exception is thrown") {
-				REQUIRE_THROWS_AS(arr.getFront(), std::out_of_range);
+				REQUIRE_THROWS_AS(arr.front(), std::out_of_range);
 			}
 		}
 	}
@@ -19,21 +19,21 @@ TEST_CASE("DynamicArray: getFront", "[DynamicArray][getFront]") {
 
 		Boon::DynamicArray<int> arr{1, 2, 4, 8, 16};
 
-		WHEN("getFront is called") {
+		WHEN("front is called") {
 			THEN("the first element of the array is returned") {
-				REQUIRE(arr.getFront() == 1);
+				REQUIRE(arr.front() == 1);
 			}
 		}
 	}
 }
 
-TEST_CASE("DynamicArray: getFront - const", "[DynamicArray][getFront]") {
+TEST_CASE("DynamicArray: front - const", "[DynamicArray][front]") {
 	GIVEN("an empty DynamicArray") {
 		const Boon::DynamicArray<int> arr;
 
-		WHEN("getFront is called") {
+		WHEN("front is called") {
 			THEN("and exception is thrown") {
-				REQUIRE_THROWS_AS(arr.getFront(), std::out_of_range);
+				REQUIRE_THROWS_AS(arr.front(), std::out_of_range);
 			}
 		}
 	}
@@ -42,9 +42,9 @@ TEST_CASE("DynamicArray: getFront - const", "[DynamicArray][getFront]") {
 
 		const Boon::DynamicArray<int> arr{1, 2, 4, 8, 16};
 
-		WHEN("getFront is called") {
+		WHEN("front is called") {
 			THEN("the first element of the array is returned") {
-				REQUIRE(arr.getFront() == 1);
+				REQUIRE(arr.front() == 1);
 			}
 		}
 	}
