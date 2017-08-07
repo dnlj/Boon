@@ -411,9 +411,11 @@ namespace Boon {
 			 */
 			Iterator erase(ConstIterator beginIt, ConstIterator endIt);
 
-			/* TODO: 
-			void popBack(); // TODO: make this use erase?
-			*/
+			/**
+			 * @brief Removes the element at end().
+			 * @throws std::out_of_range When the DynamicArray is empty.
+			 */
+			void pop_back();
 			
 			/**
 			 * @brief Clears the Boon::DynamicArray.

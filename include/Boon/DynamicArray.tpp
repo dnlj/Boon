@@ -406,6 +406,11 @@ namespace Boon {
 	}
 
 	template<class T>
+	void DynamicArray<T>::pop_back() {
+		erase(--end());
+	}
+
+	template<class T>
 	void DynamicArray<T>::clear() {
 		delete[] data;
 		size = 0;
