@@ -4,12 +4,12 @@
 // Boon
 #include <Boon/DynamicArray.hpp>
 
-TEST_CASE("DynamicArray: getData", "[DynamicArray][getData]") {
+TEST_CASE("DynamicArray: data", "[DynamicArray][data]") {
 	GIVEN("a empty DynamicArray") {
 		Boon::DynamicArray<int> arr{};
 
-		WHEN("getData is called") {
-			auto data = arr.getData();
+		WHEN("data is called") {
+			auto data = arr.data();
 
 			THEN("the returned value is equal to the internal array or nullptr") {
 				REQUIRE((data == nullptr || data == &arr[0]));
@@ -20,8 +20,8 @@ TEST_CASE("DynamicArray: getData", "[DynamicArray][getData]") {
 	GIVEN("a non-empty DynamicArray") {
 		Boon::DynamicArray<int> arr{1, 2, 4, 8, 16};
 
-		WHEN("getData is called") {
-			auto data = arr.getData();
+		WHEN("data is called") {
+			auto data = arr.data();
 			
 			THEN("the returned value is equal to the internal array") {
 				REQUIRE(data == &arr[0]);
@@ -36,12 +36,12 @@ TEST_CASE("DynamicArray: getData", "[DynamicArray][getData]") {
 	}
 }
 
-TEST_CASE("DynamicArray: getData - const", "[DynamicArray][getData]") {
+TEST_CASE("DynamicArray: data - const", "[DynamicArray][data]") {
 	GIVEN("a empty DynamicArray") {
 		const Boon::DynamicArray<int> arr{};
 
-		WHEN("getData is called") {
-			auto data = arr.getData();
+		WHEN("data is called") {
+			auto data = arr.data();
 
 			THEN("the returned value is equal to the internal array or nullptr") {
 				REQUIRE((data == nullptr || data == &arr[0]));
@@ -52,8 +52,8 @@ TEST_CASE("DynamicArray: getData - const", "[DynamicArray][getData]") {
 	GIVEN("a non-empty DynamicArray") {
 		const Boon::DynamicArray<int> arr{1, 2, 4, 8, 16};
 
-		WHEN("getData is called") {
-			auto data = arr.getData();
+		WHEN("data is called") {
+			auto data = arr.data();
 
 			THEN("the returned value is equal to the internal array") {
 				REQUIRE(data == &arr[0]);

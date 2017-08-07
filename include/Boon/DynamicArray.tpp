@@ -504,12 +504,12 @@ namespace Boon {
 	}
 
 	template<class T>
-	inline T* DynamicArray<T>::getData() {
+	inline T* DynamicArray<T>::data() {
 		return data_array;
 	}
 
 	template<class T>
-	inline const T* DynamicArray<T>::getData() const {
+	inline const T* DynamicArray<T>::data() const {
 		return data_array;
 	}
 

@@ -483,10 +483,10 @@ namespace Boon {
 			 * @brief Gets a pointer to the internal array.
 			 * @return A pointer to the internal array.
 			 */
-			T* getData();
+			T* data();
 
-			/** @copydoc Boon::DynamicArray::getData */
-			const T* getData() const;
+			/** @copydoc Boon::DynamicArray::data */
+			const T* data() const;
 
 			/**
 			 * @brief Gets an iterator to the first element in the array.
