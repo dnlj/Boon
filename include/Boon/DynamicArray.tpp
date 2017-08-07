@@ -9,7 +9,7 @@ namespace Boon {
 	template<class T>
 	void swap(DynamicArray<T>& first, DynamicArray<T>& second) noexcept {
 		using std::swap;
-		swap(first.size, second.size);
+		swap(first.data_size, second.data_size);
 		swap(first.capacity, second.capacity);
 		swap(first.data, second.data);
 	}
@@ -179,16 +179,16 @@ namespace Boon {
 	DynamicArray<T>::DynamicArray(std::initializer_list<T> list) {
 		reserveCapacity(list.size());
 		Boon::copy(list.begin(), list.end(), data);
-		size = list.size();
+		data_size = list.size();
 	}
 
 	template<class T>
 	DynamicArray<T>::DynamicArray(const DynamicArray<T>& other) :
-		size{other.size},
-		capacity{other.size},
-		data{new T[size]} {
+		data_size{other.data_size},
+		capacity{data_size},
+		data{new T[data_size]} {
 
-		Boon::copy(other.data, other.data + other.size, data);
+		Boon::copy(other.data, other.data + other.data_size, data);
 	}
 
 	template<class T>
@@ -198,9 +198,9 @@ namespace Boon {
 
 	template<class T>
 	DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T>& other) {
-		if (capacity >= other.size) {
-			size = other.size;
-			Boon::copy(other.data, other.data + other.size, data);
+		if (capacity >= other.data_size) {
+			data_size = other.data_size;
+			Boon::copy(other.data, other.data + other.data_size, data);
 		} else {
 			auto temp = other;
 			swap(*this, temp);
@@ -225,7 +225,7 @@ namespace Boon {
 	template<class T>
 	bool DynamicArray<T>::operator==(const DynamicArray<T>& other) const {
 		// Make sure they are the same size
-		if (size != other.size) {
+		if (data_size != other.data_size) {
 			return false;
 		}
 
@@ -235,7 +235,7 @@ namespace Boon {
 		}
 
 		// Check for equality
-		return std::equal(data, data + size, other.data);
+		return std::equal(data, data + data_size, other.data);
 	}
 
 	template<class T>
@@ -262,7 +262,7 @@ namespace Boon {
 		T* newData = new T[capacity];
 
 		// Copy over the old data
-		Boon::copy(data, data + size, newData);
+		Boon::copy(data, data + data_size, newData);
 
 		// Delete old array
 		delete[] data;
@@ -278,12 +278,12 @@ namespace Boon {
 		reserveCapacity(size);
 
 		// Fill any uninitialized indicies with value
-		for (size_t i = this->size; i < size; ++i) {
+		for (size_t i = data_size; i < size; ++i) {
 			data[i] = value;
 		}
 		
 		// Update size
-		this->size = size;
+		data_size = size;
 	}
 
 	template<class T>
@@ -294,21 +294,21 @@ namespace Boon {
 	template<class T>
 	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, T&& value) {
 		// Make sure index is valid
-		if (index > size) {
+		if (index > data_size) {
 			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::getSize()");
 		}
 
 		// Reserver the additional capacity
-		reserveCapacity(size + 1);
+		reserveCapacity(data_size + 1);
 
 		// Shift values
-		for (size_t i = size; i > index; --i) {
+		for (size_t i = data_size; i > index; --i) {
 			data[i] = data[i - 1];
 		}
 
 		// Insert our new values
 		data[index] = std::move(value);
-		++size;
+		++data_size;
 
 		// Return an iterator to our new values
 		return Iterator{data + index};
@@ -327,15 +327,15 @@ namespace Boon {
 	template<class T>
 	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, size_t count, const T& value) {
 		// Make sure index is valid
-		if (index > size) {
+		if (index > data_size) {
 			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::getSize()");
 		}
 
 		// Reserver the additional capacity
-		reserveCapacity(size + count);
+		reserveCapacity(data_size + count);
 
 		// Shift values
-		for (size_t i = size + count - 1; i > index; --i) {
+		for (size_t i = data_size + count - 1; i > index; --i) {
 			data[i] = data[i - count];
 		}
 
@@ -343,7 +343,7 @@ namespace Boon {
 		for (size_t i = index; i < index + count; ++i) {
 			data[i] = value;
 		}
-		size += count;
+		data_size += count;
 
 		// Return an iterator to our new values
 		return Iterator{data + index};
@@ -361,18 +361,18 @@ namespace Boon {
 
 	template<class T>
 	void DynamicArray<T>::pushBack(T&& value) {
-		reserveCapacity(size + 1);
-		data[size] = std::move(value);
-		++size;
+		reserveCapacity(data_size + 1);
+		data[data_size] = std::move(value);
+		++data_size;
 	}
 
 	template<class T>
 	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(size_t beginIndex, size_t endIndex) {
-		if (beginIndex >= size) {
+		if (beginIndex >= data_size) {
 			throw std::out_of_range("The start index \"" + std::to_string(beginIndex) + "\" is greater or equal to DynamicArray<T>::getSize()");
 		}
 
-		if (endIndex > size) {
+		if (endIndex > data_size) {
 			throw std::out_of_range("The end index \"" + std::to_string(endIndex) + "\" is greater than DynamicArray<T>::getSize()");
 		}
 
@@ -385,7 +385,7 @@ namespace Boon {
 		}
 
 		Boon::move(begin() + endIndex, end(), begin() + beginIndex);
-		size -= endIndex - beginIndex;
+		data_size -= endIndex - beginIndex;
 
 		return begin() + beginIndex;
 	}
@@ -413,22 +413,22 @@ namespace Boon {
 	template<class T>
 	void DynamicArray<T>::clear() {
 		delete[] data;
-		size = 0;
+		data_size = 0;
 		data = new T[capacity];
 	}
 
 	template<class T>
 	void DynamicArray<T>::shrinkToFit() {
-		T* newData = new T[size];
-		Boon::copy(data, data + size, newData);
+		T* newData = new T[data_size];
+		Boon::copy(data, data + data_size, newData);
 		delete[] data;
 		data = newData;
-		capacity = size;
+		capacity = data_size;
 	}
 	
 	template<class T>
 	inline size_t DynamicArray<T>::getSize() const {
-		return size;
+		return data_size;
 	}
 
 	template<class T>
@@ -438,7 +438,7 @@ namespace Boon {
 
 	template<class T>
 	inline bool DynamicArray<T>::isEmpty() const {
-		return size == 0;
+		return data_size == 0;
 	}
 
 	template<class T>
@@ -465,7 +465,7 @@ namespace Boon {
 			throw std::out_of_range("Boon::DynamicArray<T>::getBack was called on an empty array.");
 		}
 
-		return data[size - 1];
+		return data[data_size - 1];
 	}
 
 	template<class T>
@@ -474,7 +474,7 @@ namespace Boon {
 			throw std::out_of_range("Boon::DynamicArray<T>::getBack was called on an empty array.");
 		}
 
-		return data[size - 1];
+		return data[data_size - 1];
 	}
 
 	template<class T>
@@ -483,7 +483,7 @@ namespace Boon {
 			throw std::out_of_range("Boon::DynamicArray<T>::getAt was called on an empty array.");
 		}
 
-		if (index >= size) {
+		if (index >= data_size) {
 			throw std::out_of_range("Boon::DynamicArray<T>::getAt was called with an out of range index.");
 		}
 
@@ -496,7 +496,7 @@ namespace Boon {
 			throw std::out_of_range("Boon::DynamicArray<T>::getAt was called on an empty array.");
 		}
 
-		if (index >= size) {
+		if (index >= data_size) {
 			throw std::out_of_range("Boon::DynamicArray<T>::getAt was called with an out of range index.");
 		}
 
@@ -520,7 +520,7 @@ namespace Boon {
 
 	template<class T>
 	typename DynamicArray<T>::Iterator DynamicArray<T>::end() {
-		return Iterator{data + size};
+		return Iterator{data + data_size};
 	}
 
 	template<class T>
@@ -530,7 +530,7 @@ namespace Boon {
 
 	template<class T>
 	typename DynamicArray<T>::ConstIterator DynamicArray<T>::end() const {
-		return ConstIterator{data + size};
+		return ConstIterator{data + data_size};
 	}
 
 	template<class T>

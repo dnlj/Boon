@@ -546,7 +546,7 @@ namespace Boon {
 
 		private:
 			/** Stores the number of elements in the array */
-			size_t size = 0;
+			size_t data_size = 0;
 
 			/** Stores the capacity of the array */
 			size_t capacity = 0;
