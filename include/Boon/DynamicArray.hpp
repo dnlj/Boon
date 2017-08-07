@@ -439,7 +439,7 @@ namespace Boon {
 			 * @brief Gets the capacity of the Boon::DynamicArray.
 			 * @return The capacity of the Boon::DynamicArray.
 			 */
-			size_t getCapacity() const;
+			size_t capacity() const;
 			
 			/**
 			 * @brief Checks if the Boon::DynamicArray is empty.

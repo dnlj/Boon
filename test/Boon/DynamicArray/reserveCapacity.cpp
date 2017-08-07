@@ -9,28 +9,28 @@ TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
 		Boon::DynamicArray<int> arr;
 
 		THEN("capacity is greater or equal to it's size") {
-			REQUIRE(arr.getCapacity() >= arr.size());
+			REQUIRE(arr.capacity() >= arr.size());
 		}
 
 		WHEN("capacity is reserved greater than current capacity") {
-			const auto capacity = arr.getCapacity() + 5;
+			const auto capacity = arr.capacity() + 5;
 
 			// Make sure there was not an overflow
-			REQUIRE(capacity > arr.getCapacity());
+			REQUIRE(capacity > arr.capacity());
 
 			arr.reserveCapacity(capacity);
 
 			THEN("the capacity is greater than or equal to the reserved capacity") {
-				REQUIRE(arr.getCapacity() >= capacity);
+				REQUIRE(arr.capacity() >= capacity);
 			}
 		}
 
 		WHEN("capacity is reserved equal to current capacity") {
-			const auto capacity = arr.getCapacity();
+			const auto capacity = arr.capacity();
 			arr.reserveCapacity(capacity);
 
 			THEN("the capacity is not changed") {
-				REQUIRE(arr.getCapacity() == capacity);
+				REQUIRE(arr.capacity() == capacity);
 			}
 		}
 	}
@@ -39,33 +39,33 @@ TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
 		Boon::DynamicArray<int> arr{1, 2, 4, 8, 16, 32, 64};
 
 		THEN("capacity is greater or equal to it's size") {
-			REQUIRE(arr.getCapacity() >= arr.size());
+			REQUIRE(arr.capacity() >= arr.size());
 		}
 
 		WHEN("capacity is reserved greater than current capacity") {
-			const auto capacity = arr.getCapacity() + 5;
+			const auto capacity = arr.capacity() + 5;
 
 			// Make sure there was not an overflow
-			REQUIRE(capacity > arr.getCapacity());
+			REQUIRE(capacity > arr.capacity());
 
 			arr.reserveCapacity(capacity);
 
 			THEN("the capacity is greater than or equal to the reserved capacity") {
-				REQUIRE(arr.getCapacity() >= capacity);
+				REQUIRE(arr.capacity() >= capacity);
 			}
 		}
 
 		WHEN("capacity is reserved equal to current capacity") {
-			const auto capacity = arr.getCapacity();
+			const auto capacity = arr.capacity();
 			arr.reserveCapacity(capacity);
 
 			THEN("the capacity is not changed") {
-				REQUIRE(arr.getCapacity() == capacity);
+				REQUIRE(arr.capacity() == capacity);
 			}
 		}
 
 		WHEN("capacity is reserved less than current capacity") {
-			const auto originalCapacity = arr.getCapacity();
+			const auto originalCapacity = arr.capacity();
 			const auto capacity = originalCapacity - 5;
 
 			// Make sure there was not an overflow
@@ -74,7 +74,7 @@ TEST_CASE("DynamicArray: reserveCapacity", "[DynamicArray][reserverCapacity]") {
 			arr.reserveCapacity(capacity);
 
 			THEN("the capacity is not changed") {
-				REQUIRE(arr.getCapacity() == originalCapacity);
+				REQUIRE(arr.capacity() == originalCapacity);
 			}
 		}
 	}

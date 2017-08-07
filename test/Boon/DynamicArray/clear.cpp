@@ -9,11 +9,11 @@ TEST_CASE("DynamicArray: clear", "[DynamicArray][clear]") {
 		Boon::DynamicArray<int> arr;
 
 		WHEN("the array is cleared") {
-			const auto capacity = arr.getCapacity();
+			const auto capacity = arr.capacity();
 			arr.clear();
 
 			THEN("the capacity does not change") {
-				REQUIRE(capacity == arr.getCapacity());
+				REQUIRE(capacity == arr.capacity());
 			}
 
 			THEN("the array is empty") {
@@ -26,11 +26,11 @@ TEST_CASE("DynamicArray: clear", "[DynamicArray][clear]") {
 		Boon::DynamicArray<int> arr{1, 2, 4, 8, 16};
 
 		WHEN("the array is cleared") {
-			const auto capacity = arr.getCapacity();
+			const auto capacity = arr.capacity();
 			arr.clear();
 
 			THEN("the capacity does not change") {
-				REQUIRE(capacity == arr.getCapacity());
+				REQUIRE(capacity == arr.capacity());
 			}
 
 			THEN("the array is empty") {

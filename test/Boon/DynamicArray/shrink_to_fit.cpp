@@ -17,7 +17,7 @@ TEST_CASE("DynamicArray: shrink_to_fit", "[DynamicArray][shrink_to_fit]") {
 			}
 
 			THEN("the capacity is equal to the size") {
-				REQUIRE(arr.getCapacity() == arr.size());
+				REQUIRE(arr.capacity() == arr.size());
 			}
 		}
 	}
@@ -34,7 +34,7 @@ TEST_CASE("DynamicArray: shrink_to_fit", "[DynamicArray][shrink_to_fit]") {
 			}
 
 			THEN("the capacity is equal to the size") {
-				REQUIRE(arr.getCapacity() == arr.size());
+				REQUIRE(arr.capacity() == arr.size());
 			}
 		}
 	}
@@ -53,7 +53,7 @@ TEST_CASE("DynamicArray: shrink_to_fit", "[DynamicArray][shrink_to_fit]") {
 			}
 
 			THEN("the capacity is equal to the size") {
-				REQUIRE(arr.getCapacity() == arr.size());
+				REQUIRE(arr.capacity() == arr.size());
 			}
 		}
 	}
@@ -72,7 +72,7 @@ TEST_CASE("DynamicArray: shrink_to_fit", "[DynamicArray][shrink_to_fit]") {
 			}
 
 			THEN("the capacity is equal to the size") {
-				REQUIRE(arr.getCapacity() == arr.size());
+				REQUIRE(arr.capacity() == arr.size());
 			}
 		}
 	}

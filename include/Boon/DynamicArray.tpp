@@ -432,7 +432,7 @@ namespace Boon {
 	}
 
 	template<class T>
-	inline size_t DynamicArray<T>::getCapacity() const {
+	inline size_t DynamicArray<T>::capacity() const {
 		return data_capacity;
 	}
 

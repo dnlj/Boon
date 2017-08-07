@@ -13,7 +13,7 @@ TEST_CASE("DynamicArray: default constructor", "[DynamicArray]") {
 		}
 
 		THEN("the capacity is zero") {
-			REQUIRE(arr.getCapacity() == 0);
+			REQUIRE(arr.capacity() == 0);
 		}
 	}
 }
@@ -32,7 +32,7 @@ TEST_CASE("DynamicArray: size constructor", "[DynamicArray]") {
 			}
 		
 			THEN("the capacity is at least as large as the size") {
-				REQUIRE(arr.getCapacity() >= arr.size());
+				REQUIRE(arr.capacity() >= arr.size());
 			}
 		}
 
@@ -48,7 +48,7 @@ TEST_CASE("DynamicArray: size constructor", "[DynamicArray]") {
 			}
 
 			THEN("the capacity is at least as large as the size") {
-				REQUIRE(arr.getCapacity() >= arr.size());
+				REQUIRE(arr.capacity() >= arr.size());
 			}
 
 			THEN("each element has been initialized to the value passed") {
@@ -73,7 +73,7 @@ TEST_CASE("DynamicArray: list initialization constructor", "[DynamicArray]") {
 		}
 
 		THEN("the capacity is at least as large as the size") {
-			REQUIRE(arr.getCapacity() >= arr.size());
+			REQUIRE(arr.capacity() >= arr.size());
 		}
 
 		THEN("each element has been initialized to the appropriate value") {
@@ -125,7 +125,7 @@ TEST_CASE("DynamicArray: move constructor", "[DynamicArray]") {
 
 			// Since we are using a move constructor we need to get these values before the move
 			const auto toCopySize = toCopy.size();
-			const auto toCopyCapacity = toCopy.getCapacity();
+			const auto toCopyCapacity = toCopy.capacity();
 			const auto toCopyData = &toCopy[0];
 
 			// Construct an array with the move constructor
@@ -136,7 +136,7 @@ TEST_CASE("DynamicArray: move constructor", "[DynamicArray]") {
 			}
 
 			THEN("the capacity of the moved to array is equal to the capacity of the moved array") {
-				REQUIRE(arr.getCapacity() == toCopyCapacity);
+				REQUIRE(arr.capacity() == toCopyCapacity);
 			}
 
 			THEN("the internal data of the moved to array is equal to the internal data of the moved array") {
