@@ -2,6 +2,7 @@
 
 // STD
 #include <type_traits>
+#include <iterator>
 
 namespace Boon {
 	/**
@@ -89,6 +90,24 @@ namespace Boon {
 	 */
 	template<class InIt, class OutIt>
 	void move(InIt inStart, InIt inEnd, OutIt outStart);
+
+	/**
+	 * @brief Sorts the elements in the range [@p first, @p last) using a bubble sort.
+	 * @tparam RandomIt The random access iterator type.
+	 * @param[in] first The first element to sort.
+	 * @param[in] last One past the last element to sort.
+	 */
+	template<
+		class RandomIt,
+		class = std::enable_if_t<
+			std::is_same_v<
+				std::iterator_traits<RandomIt>::iterator_category,
+				std::random_access_iterator_tag
+			>
+		>
+	>
+	void bubble_sort(RandomIt first, RandomIt last);
+
 }
 
 #include <Boon/algorithm.tpp>

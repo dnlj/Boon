@@ -60,4 +60,23 @@ namespace Boon {
 			*(outStart++) = std::move(*(inStart++));
 		}
 	}
+
+	template<class RandomIt, class>
+	void bubble_sort(RandomIt first, RandomIt last) {
+		bool changed = true;
+
+		while (changed) {
+			changed = false;
+
+			for (auto it = first + 1; it != last; ++it) {
+				auto prev = it - 1;
+
+				if (*prev > *it) {
+					using std::swap;
+					swap(*it, *prev);
+					changed = true;
+				}
+			}
+		}
+	}
 }
