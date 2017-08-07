@@ -474,10 +474,10 @@ namespace Boon {
 			 * @throws std::out_of_range When called on an empty array. 
 			 * @throws std::out_of_range When @p index is greater than or equal to the size of the array.
 			 */
-			T& getAt(size_t index);
+			T& at(size_t index);
 
-			/** @copydoc Boon::DynamicArray::getAt */
-			const T& getAt(size_t index) const;
+			/** @copydoc Boon::DynamicArray::at */
+			const T& at(size_t index) const;
 
 			/**
 			 * @brief Gets a pointer to the internal array.

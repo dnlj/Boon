@@ -478,26 +478,26 @@ namespace Boon {
 	}
 
 	template<class T>
-	T& DynamicArray<T>::getAt(size_t index) {
+	T& DynamicArray<T>::at(size_t index) {
 		if (isEmpty()) {
-			throw std::out_of_range("Boon::DynamicArray<T>::getAt was called on an empty array.");
+			throw std::out_of_range("Boon::DynamicArray<T>::at was called on an empty array.");
 		}
 
 		if (index >= data_size) {
-			throw std::out_of_range("Boon::DynamicArray<T>::getAt was called with an out of range index.");
+			throw std::out_of_range("Boon::DynamicArray<T>::at was called with an out of range index.");
 		}
 
 		return data_array[index];
 	}
 
 	template<class T>
-	const T& DynamicArray<T>::getAt(size_t index) const {
+	const T& DynamicArray<T>::at(size_t index) const {
 		if (isEmpty()) {
-			throw std::out_of_range("Boon::DynamicArray<T>::getAt was called on an empty array.");
+			throw std::out_of_range("Boon::DynamicArray<T>::at was called on an empty array.");
 		}
 
 		if (index >= data_size) {
-			throw std::out_of_range("Boon::DynamicArray<T>::getAt was called with an out of range index.");
+			throw std::out_of_range("Boon::DynamicArray<T>::at was called with an out of range index.");
 		}
 
 		return data_array[index];
