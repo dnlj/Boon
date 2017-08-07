@@ -437,13 +437,13 @@ namespace Boon {
 	}
 
 	template<class T>
-	inline bool DynamicArray<T>::isEmpty() const {
+	inline bool DynamicArray<T>::empty() const {
 		return data_size == 0;
 	}
 
 	template<class T>
 	T& DynamicArray<T>::front() {
-		if (isEmpty()) {
+		if (empty()) {
 			throw std::out_of_range("Boon::DynamicArray<T>::front was called on an empty array.");
 		}
 
@@ -452,7 +452,7 @@ namespace Boon {
 
 	template<class T>
 	const T& DynamicArray<T>::front() const {
-		if (isEmpty()) {
+		if (empty()) {
 			throw std::out_of_range("Boon::DynamicArray<T>::front was called on an empty array.");
 		}
 	
@@ -461,7 +461,7 @@ namespace Boon {
 
 	template<class T>
 	T& DynamicArray<T>::back() {
-		if (isEmpty()) {
+		if (empty()) {
 			throw std::out_of_range("Boon::DynamicArray<T>::back was called on an empty array.");
 		}
 
@@ -470,7 +470,7 @@ namespace Boon {
 
 	template<class T>
 	const T& DynamicArray<T>::back() const {
-		if (isEmpty()) {
+		if (empty()) {
 			throw std::out_of_range("Boon::DynamicArray<T>::back was called on an empty array.");
 		}
 
@@ -479,7 +479,7 @@ namespace Boon {
 
 	template<class T>
 	T& DynamicArray<T>::at(size_t index) {
-		if (isEmpty()) {
+		if (empty()) {
 			throw std::out_of_range("Boon::DynamicArray<T>::at was called on an empty array.");
 		}
 
@@ -492,7 +492,7 @@ namespace Boon {
 
 	template<class T>
 	const T& DynamicArray<T>::at(size_t index) const {
-		if (isEmpty()) {
+		if (empty()) {
 			throw std::out_of_range("Boon::DynamicArray<T>::at was called on an empty array.");
 		}
 

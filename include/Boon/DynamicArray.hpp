@@ -445,7 +445,7 @@ namespace Boon {
 			 * @brief Checks if the Boon::DynamicArray is empty.
 			 * @return True if the array is empty otherwise false.
 			 */
-			bool isEmpty() const;
+			bool empty() const;
 			
 			/**
 			 * @brief Gets the first element in the Boon::DynamicArray.

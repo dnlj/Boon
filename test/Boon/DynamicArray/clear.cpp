@@ -17,7 +17,7 @@ TEST_CASE("DynamicArray: clear", "[DynamicArray][clear]") {
 			}
 
 			THEN("the array is empty") {
-				REQUIRE(arr.isEmpty());
+				REQUIRE(arr.empty());
 			}
 		}
 	}
@@ -34,7 +34,7 @@ TEST_CASE("DynamicArray: clear", "[DynamicArray][clear]") {
 			}
 
 			THEN("the array is empty") {
-				REQUIRE(arr.isEmpty());
+				REQUIRE(arr.empty());
 			}
 		}
 	}
