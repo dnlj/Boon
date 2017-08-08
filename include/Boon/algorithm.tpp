@@ -61,15 +61,16 @@ namespace Boon {
 		}
 	}
 
-	template<class RandomIt, class>
-	void bubble_sort(RandomIt first, RandomIt last) {
+	template<class BiIt, class>
+	void bubble_sort(BiIt first, BiIt last) {
 		bool changed = true;
 
 		while (changed) {
 			changed = false;
 
-			for (auto it = first + 1; it != last; ++it) {
-				auto prev = it - 1;
+			for (auto it = first; ++it != last;) {
+				auto prev = it;
+				--prev;
 
 				if (*prev > *it) {
 					using std::swap;
@@ -77,6 +78,8 @@ namespace Boon {
 					changed = true;
 				}
 			}
+
+			--last;
 		}
 	}
 }

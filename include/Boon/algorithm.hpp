@@ -93,20 +93,20 @@ namespace Boon {
 
 	/**
 	 * @brief Sorts the elements in the range [@p first, @p last) using a bubble sort.
-	 * @tparam RandomIt The random access iterator type.
+	 * @tparam BiIt The bidirectional iterator type.
 	 * @param[in] first The first element to sort.
 	 * @param[in] last One past the last element to sort.
 	 */
 	template<
-		class RandomIt,
+		class BiIt,
 		class = std::enable_if_t<
-			std::is_same_v<
-				std::iterator_traits<RandomIt>::iterator_category,
-				std::random_access_iterator_tag
+			std::is_base_of_v<
+				std::bidirectional_iterator_tag,
+				std::iterator_traits<BiIt>::iterator_category
 			>
 		>
 	>
-	void bubble_sort(RandomIt first, RandomIt last);
+	void bubble_sort(BiIt first, BiIt last);
 
 }
 
