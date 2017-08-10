@@ -63,6 +63,8 @@ namespace Boon {
 
 	template<class BiIt, class>
 	void bubble_sort(BiIt first, BiIt last) {
+		if (first == last) { return; }
+
 		bool changed = true;
 
 		while (changed) {
