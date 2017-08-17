@@ -7,7 +7,7 @@
 namespace {
 	using T = int;
 	using ArrayType = Boon::DynamicArray<T>;
-	using Iterator = ArrayType::Iterator;
+	using Iterator = ArrayType::iterator;
 }
 
 TEST_CASE("DynamicArray::Iterator: Constructor (empty)", "[Iterator][DynamicArray::Iterator]") {
@@ -258,7 +258,7 @@ TEST_CASE("DynamicArray::Iterator: operator->", "[Iterator][DynamicArray::Iterat
 			{512, 1024.0f},
 		};
 
-		decltype(arr)::Iterator it{&arr[loc]};
+		decltype(arr)::iterator it{&arr[loc]};
 
 		THEN("the members of that element can be read from") {
 			REQUIRE(it->a == arr[loc].a);
@@ -294,7 +294,7 @@ TEST_CASE("DynamicArray::Iterator: operator-> const", "[Iterator][DynamicArray::
 			{512, 1024.0f},
 		};
 
-		const decltype(arr)::Iterator it{&arr[loc]};
+		const decltype(arr)::iterator it{&arr[loc]};
 
 		THEN("the members of that element can be read from") {
 			REQUIRE(it->a == arr[loc].a);

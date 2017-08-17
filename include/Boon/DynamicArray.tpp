@@ -288,12 +288,12 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, const T& value) {
+	typename DynamicArray<T>::iterator DynamicArray<T>::insert(size_t index, const T& value) {
 		return insert(index, 1, value);
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, T&& value) {
+	typename DynamicArray<T>::iterator DynamicArray<T>::insert(size_t index, T&& value) {
 		// Make sure index is valid
 		if (index > data_size) {
 			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::size()");
@@ -312,21 +312,21 @@ namespace Boon {
 		++data_size;
 
 		// Return an iterator to our new values
-		return Iterator{data_array + index};
+		return iterator{data_array + index};
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(ConstIterator it, T&& value) {
+	typename DynamicArray<T>::iterator DynamicArray<T>::insert(const_iterator it, T&& value) {
 		return insert(it - begin(), std::move(value));
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(ConstIterator it, const T& value) {
+	typename DynamicArray<T>::iterator DynamicArray<T>::insert(const_iterator it, const T& value) {
 		return insert(it, 1, value);
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(size_t index, size_t count, const T& value) {
+	typename DynamicArray<T>::iterator DynamicArray<T>::insert(size_t index, size_t count, const T& value) {
 		// Make sure index is valid
 		if (index > data_size) {
 			throw std::out_of_range("The index \"" + std::to_string(index) + "\" is larger than DynamicArray<T>::size()");
@@ -347,11 +347,11 @@ namespace Boon {
 		data_size += count;
 
 		// Return an iterator to our new values
-		return Iterator{data_array + index};
+		return iterator{data_array + index};
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::insert(ConstIterator it, size_t count, const T& value) {
+	typename DynamicArray<T>::iterator DynamicArray<T>::insert(const_iterator it, size_t count, const T& value) {
 		return insert(it - begin(), count, value);
 	}
 
@@ -368,7 +368,7 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(size_t beginIndex, size_t endIndex) {
+	typename DynamicArray<T>::iterator DynamicArray<T>::erase(size_t beginIndex, size_t endIndex) {
 		if (beginIndex >= data_size) {
 			throw std::out_of_range("The start index \"" + std::to_string(beginIndex) + "\" is greater or equal to DynamicArray<T>::size()");
 		}
@@ -392,17 +392,17 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(size_t index) {
+	typename DynamicArray<T>::iterator DynamicArray<T>::erase(size_t index) {
 		return erase(index, index + 1);
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(ConstIterator it) {
+	typename DynamicArray<T>::iterator DynamicArray<T>::erase(const_iterator it) {
 		return erase(it - begin());
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::erase(ConstIterator startIt, ConstIterator endIt) {
+	typename DynamicArray<T>::iterator DynamicArray<T>::erase(const_iterator startIt, const_iterator endIt) {
 		return erase(startIt - begin(), endIt - begin());
 	}
 
@@ -515,62 +515,62 @@ namespace Boon {
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::begin() {
-		return Iterator{data_array};
+	typename DynamicArray<T>::iterator DynamicArray<T>::begin() {
+		return iterator{data_array};
 	}
 
 	template<class T>
-	typename DynamicArray<T>::Iterator DynamicArray<T>::end() {
-		return Iterator{data_array + data_size};
+	typename DynamicArray<T>::iterator DynamicArray<T>::end() {
+		return iterator{data_array + data_size};
 	}
 
 	template<class T>
-	typename DynamicArray<T>::ConstIterator DynamicArray<T>::begin() const {
-		return ConstIterator{data_array};
+	typename DynamicArray<T>::const_iterator DynamicArray<T>::begin() const {
+		return const_iterator{data_array};
 	}
 
 	template<class T>
-	typename DynamicArray<T>::ConstIterator DynamicArray<T>::end() const {
-		return ConstIterator{data_array + data_size};
+	typename DynamicArray<T>::const_iterator DynamicArray<T>::end() const {
+		return const_iterator{data_array + data_size};
 	}
 
 	template<class T>
-	typename DynamicArray<T>::ConstIterator DynamicArray<T>::cbegin() const {
+	typename DynamicArray<T>::const_iterator DynamicArray<T>::cbegin() const {
 		return begin();
 	}
 
 	template<class T>
-	typename DynamicArray<T>::ConstIterator DynamicArray<T>::cend() const {
+	typename DynamicArray<T>::const_iterator DynamicArray<T>::cend() const {
 		return end();
 	}
 
 	template<class T>
-	typename DynamicArray<T>::ReverseIterator DynamicArray<T>::rbegin() {
-		return ReverseIterator{end()};
+	typename DynamicArray<T>::reverse_iterator DynamicArray<T>::rbegin() {
+		return reverse_iterator{end()};
 	}
 
 	template<class T>
-	typename DynamicArray<T>::ReverseIterator DynamicArray<T>::rend() {
-		return ReverseIterator{begin()};
+	typename DynamicArray<T>::reverse_iterator DynamicArray<T>::rend() {
+		return reverse_iterator{begin()};
 	}
 
 	template<class T>
-	typename DynamicArray<T>::ConstReverseIterator DynamicArray<T>::rbegin() const {
-		return ConstReverseIterator{end()};
+	typename DynamicArray<T>::const_reverse_iterator DynamicArray<T>::rbegin() const {
+		return const_reverse_iterator{end()};
 	}
 
 	template<class T>
-	typename DynamicArray<T>::ConstReverseIterator DynamicArray<T>::rend() const {
-		return ConstReverseIterator{begin()};
+	typename DynamicArray<T>::const_reverse_iterator DynamicArray<T>::rend() const {
+		return const_reverse_iterator{begin()};
 	}
 
 	template<class T>
-	typename DynamicArray<T>::ConstReverseIterator DynamicArray<T>::crbegin() const {
+	typename DynamicArray<T>::const_reverse_iterator DynamicArray<T>::crbegin() const {
 		return rbegin();
 	}
 
 	template<class T>
-	typename DynamicArray<T>::ConstReverseIterator DynamicArray<T>::crend() const {
+	typename DynamicArray<T>::const_reverse_iterator DynamicArray<T>::crend() const {
 		return rend();
 	}
 }

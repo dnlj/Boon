@@ -210,10 +210,10 @@ namespace Boon {
 			};
 
 		public:
-			using Iterator = IteratorBase<false>;
-			using ConstIterator = IteratorBase<true>;
-			using ReverseIterator = std::reverse_iterator<Iterator>;
-			using ConstReverseIterator = std::reverse_iterator<ConstIterator>;
+			using iterator = IteratorBase<false>;
+			using const_iterator = IteratorBase<true>;
+			using reverse_iterator = std::reverse_iterator<iterator>;
+			using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
 			/**
 			 * @brief Constructs a Boon::DynamicArray.
@@ -310,7 +310,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p index is larger than the size of the array.
 			 * @return A iterator to the inserted value.
 			 */
-			Iterator insert(size_t index, const T& value);
+			iterator insert(size_t index, const T& value);
 			
 			/**
 			 * @brief Moves the value @p value into the index @p index.
@@ -319,7 +319,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p index is larger than the size of the array.
 			 * @return A iterator to the inserted value.
 			 */
-			Iterator insert(size_t index, T&& value);
+			iterator insert(size_t index, T&& value);
 
 			/**
 			 * @brief Inserts the value @p value before @p it.
@@ -328,7 +328,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p it is out of range.
 			 * @return A iterator to the inserted value.
 			 */
-			Iterator insert(ConstIterator it, const T& value);
+			iterator insert(const_iterator it, const T& value);
 
 			/**
 			 * @brief Moves the value @p value before @p it.
@@ -337,7 +337,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p index is larger than the size of the array.
 			 * @return A iterator to the inserted value.
 			 */
-			Iterator insert(ConstIterator it, T&& value);
+			iterator insert(const_iterator it, T&& value);
 
 			/**
 			 * @brief Inserts @p count copies of @p value at the index @p index.
@@ -347,7 +347,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p index is larger than the size of the array.
 			 * @return A iterator to the first inserted value.
 			 */
-			Iterator insert(size_t index, size_t count, const T& value);
+			iterator insert(size_t index, size_t count, const T& value);
 
 			/**
 			 * @brief Inserts @p count copies of @p value before @p it.
@@ -357,7 +357,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p it is out of range.
 			 * @return A iterator to the first inserted value.
 			 */
-			Iterator insert(ConstIterator it, size_t count, const T& value);
+			iterator insert(const_iterator it, size_t count, const T& value);
 
 			/**
 			 * @brief Inserts p@ value at the end of the array.
@@ -382,7 +382,7 @@ namespace Boon {
 			 * @throws std::domain_error When @p endIndex is greater than or equal to @p beginIndex.
 			 * @return An iterator after the last removed element.
 			 */
-			Iterator erase(size_t beginIndex, size_t endIndex);
+			iterator erase(size_t beginIndex, size_t endIndex);
 
 			/**
 			 * @brief Removes the element at @p index.
@@ -390,7 +390,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p index is not a valid index.
 			 * @return An iterator after the removed element.
 			 */
-			Iterator erase(size_t index);
+			iterator erase(size_t index);
 
 			/**
 			 * @brief Removes the element at @p it.
@@ -398,7 +398,7 @@ namespace Boon {
 			 * @throws std::out_of_range When @p it is not a valid iterator.
 			 * @return An iterator after the removed element.
 			 */
-			Iterator erase(ConstIterator it);
+			iterator erase(const_iterator it);
 			
 			/**
 			 * @brief Removes elements in the range [@p beginIt, @p endIt).
@@ -409,7 +409,7 @@ namespace Boon {
 			 * @throws std::domain_error When @p endIt is greater than or equal to @p beginIt.
 			 * @return An iterator after the last removed element.
 			 */
-			Iterator erase(ConstIterator beginIt, ConstIterator endIt);
+			iterator erase(const_iterator beginIt, const_iterator endIt);
 
 			/**
 			 * @brief Removes the element at end().
@@ -492,47 +492,47 @@ namespace Boon {
 			 * @brief Gets an iterator to the first element in the array.
 			 * @return An iterator to the first element in the array.
 			 */
-			Iterator begin();
+			iterator begin();
 
 			/** @copydoc Boon::DynamicArray::begin */
-			ConstIterator begin() const;
+			const_iterator begin() const;
 
 			/** @copydoc Boon::DynamicArray::begin */
-			ConstIterator cbegin() const;
+			const_iterator cbegin() const;
 
 			/**
 			 * @brief Gets an iterator to the last element in the array.
 			 * @return An iterator to the last element in the array.
 			 */
-			ReverseIterator rbegin();
+			reverse_iterator rbegin();
 
 			/** @copydoc Boon::DynamicArray::rbegin */
-			ConstReverseIterator rbegin() const;
+			const_reverse_iterator rbegin() const;
 
-			ConstReverseIterator crbegin() const;
+			const_reverse_iterator crbegin() const;
 
 			/**
 			 * @brief Gets an iterator to one past the last element in the array.
 			 * @return An iterator to one past the last element in the array.
 			 */
-			Iterator end();
+			iterator end();
 
 			/** @copydoc Boon::DynamicArray::end */
-			ConstIterator end() const;
+			const_iterator end() const;
 
 			/** @copydoc Boon::DynamicArray::end */
-			ConstIterator cend() const;
+			const_iterator cend() const;
 
 			/**
 			 * @brief Gets an iterator to one before the first element in the array.
 			 * @return An iterator to one before the first element in the array.
 			 */
-			ReverseIterator rend();
+			reverse_iterator rend();
 
 			/** @copydoc Boon::DynamicArray::rend */
-			ConstReverseIterator rend() const;
+			const_reverse_iterator rend() const;
 
-			ConstReverseIterator crend() const;
+			const_reverse_iterator crend() const;
 
 			/**
 			 * @brief swaps @p first and @p second.
