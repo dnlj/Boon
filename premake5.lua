@@ -73,19 +73,18 @@ workspace(PROJECT_NAME .."Workspace")
 project(PROJECT_NAME)
 	files {
 		"./TODO.md",
-		"./include/**.h",
-		"./include/**.hpp",
-		"./include/**.tpp",
+		"./include/**",
 	}
 	debugdir "./src"
 
 project(PROJECT_NAME .."Test")
 	includedirs {
 		CATCH_DIR .."include",
+		"./test/include",
 	}
 	files {
-		"./test/**.c",
-		"./test/**.cpp",
+		"./test/src/**",
+		"./test/include/**",
 	}
 
 project(PROJECT_NAME .."Bench")
