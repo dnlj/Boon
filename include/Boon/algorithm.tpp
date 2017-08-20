@@ -61,27 +61,29 @@ namespace Boon {
 		}
 	}
 
-	template<class BiIt, class>
-	void bubble_sort(BiIt begin, BiIt end) {
+	template<class ForwardIt, class>
+	void bubble_sort(ForwardIt begin, ForwardIt end) {
 		if (begin == end) { return; }
 
 		bool changed = true;
 
 		while (changed) {
 			changed = false;
-
-			for (auto it = begin; ++it != end;) {
-				auto prev = it;
-				--prev;
-
-				if (*prev > *it) {
+			
+			auto curr = begin;
+			auto prev = begin;
+			
+			while (++curr != end) {
+				if (*prev > *curr) {
 					using std::swap;
-					swap(*it, *prev);
+					swap(*prev, *curr);
 					changed = true;
 				}
+
+				++prev;
 			}
 
-			--end;
+			end = prev;
 		}
 	}
 

@@ -1,4 +1,5 @@
 // STD
+#include <forward_list>
 #include <list>
 #include <vector>
 
@@ -13,6 +14,20 @@
 
 
 TEST_CASE("Algorithm: bubble_sort", "[bubble_sort][algorithm]") {
+	GIVEN("a forward iterating container") {
+		using Container = std::forward_list<int>;
+
+		THEN("the container iterator has the correct iterator category") {
+			using cat = std::iterator_traits<Container::iterator>::iterator_category;
+			constexpr auto same = std::is_same<cat, std::forward_iterator_tag>::value;
+			REQUIRE(same);
+		}
+
+		THEN("the algorithm is correct") {
+			SORT_ALGORITHM_TEST("Boon::bubble_sort - forward_iterator", Boon::bubble_sort, Container);
+		}
+	}
+
 	GIVEN("a bidirectional iterating container") {
 		using Container = std::list<int>;
 

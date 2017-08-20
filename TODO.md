@@ -4,7 +4,6 @@
 * Add Boon::equal
 * Replace all cases std\::equal with Boon::equal
 * Add emplace equivalent for DynamicArray
-* Update bubble_sort to use forward iterators
 
 # Maintenance
 * Create a readme

@@ -93,20 +93,20 @@ namespace Boon {
 
 	/**
 	 * @brief Sorts the elements in the range [@p begin, @p end) using a bubble sort.
-	 * @tparam BiIt The bidirectional iterator type.
+	 * @tparam ForwardIt The forward iterator type.
 	 * @param[in] begin The beginning of the range of elements to sort.
 	 * @param[in] end The end of the range of elements to sort.
 	 */
 	template<
-		class BiIt,
+		class ForwardIt,
 		class = std::enable_if_t<
 			std::is_base_of_v<
-				std::bidirectional_iterator_tag,
-				std::iterator_traits<BiIt>::iterator_category
+				std::forward_iterator_tag,
+				std::iterator_traits<ForwardIt>::iterator_category
 			>
 		>
 	>
-	void bubble_sort(BiIt begin, BiIt end);
+	void bubble_sort(ForwardIt begin, ForwardIt end);
 
 	/**
 	 * @brief Sorts the elements in the range [@p begin, @p end) using an insertion sort.
