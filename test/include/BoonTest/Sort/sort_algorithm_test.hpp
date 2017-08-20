@@ -68,6 +68,14 @@ namespace BoonTest::Sort {
 			GIVEN("a container with many elements in order") {
 				compare_sort(Container{-4, -2, -1, 0, 1, 2, 4}, sort);
 			}
+
+			GIVEN("a container with duplicates") {
+				compare_sort(Container{4, 2, 1, 0, 1, 2, 4}, sort);
+			}
+
+			GIVEN("a container with only duplicates") {
+				compare_sort(Container{4, 4, 4, 4, 4, 4, 4}, sort);
+			}
 		}
 	}
 

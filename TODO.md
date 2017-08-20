@@ -8,8 +8,6 @@
 
 # Maintenance
 * Create a readme
-* Add test with only duplicate elements to sort_algorithm_test
-* Add test with duplicate and other elements to sort_algorithm_test
 
 # Containers
 - [x] DynamicArray
