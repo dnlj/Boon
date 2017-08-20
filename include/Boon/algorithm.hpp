@@ -92,10 +92,10 @@ namespace Boon {
 	void move(InIt inStart, InIt inEnd, OutIt outStart);
 
 	/**
-	 * @brief Sorts the elements in the range [@p first, @p last) using a bubble sort.
+	 * @brief Sorts the elements in the range [@p begin, @p end) using a bubble sort.
 	 * @tparam BiIt The bidirectional iterator type.
-	 * @param[in] first The first element to sort.
-	 * @param[in] last One past the last element to sort.
+	 * @param[in] begin The beginning of the range of elements to sort.
+	 * @param[in] end The end of the range of elements to sort.
 	 */
 	template<
 		class BiIt,
@@ -106,13 +106,13 @@ namespace Boon {
 			>
 		>
 	>
-	void bubble_sort(BiIt first, BiIt last);
+	void bubble_sort(BiIt begin, BiIt end);
 
 	/**
-	 * @brief Sorts the elements in the range [@p first, @p last) using a insertion sort.
+	 * @brief Sorts the elements in the range [@p begin, @p end) using an insertion sort.
 	 * @tparam ForwardIt The forward iterator type.
-	 * @param[in] first The first element to sort.
-	 * @param[in] last One past the last element to sort.
+	 * @param[in] begin The beginning of the range of elements to sort.
+	 * @param[in] end The end of the range of elements to sort.
 	 */
 	template<
 		class ForwardIt,
@@ -123,7 +123,7 @@ namespace Boon {
 			>
 		>
 	>
-	void insertion_sort(ForwardIt first, ForwardIt last);
+	void insertion_sort(ForwardIt begin, ForwardIt end);
 
 }
 

@@ -62,15 +62,15 @@ namespace Boon {
 	}
 
 	template<class BiIt, class>
-	void bubble_sort(BiIt first, BiIt last) {
-		if (first == last) { return; }
+	void bubble_sort(BiIt begin, BiIt end) {
+		if (begin == end) { return; }
 
 		bool changed = true;
 
 		while (changed) {
 			changed = false;
 
-			for (auto it = first; ++it != last;) {
+			for (auto it = begin; ++it != end;) {
 				auto prev = it;
 				--prev;
 
@@ -81,20 +81,20 @@ namespace Boon {
 				}
 			}
 
-			--last;
+			--end;
 		}
 	}
 
 	template<class ForwardIt, class>
-	void insertion_sort(ForwardIt first, ForwardIt last) {
-		if (first == last) { return; }
+	void insertion_sort(ForwardIt begin, ForwardIt end) {
+		if (begin == end) { return; }
 
-		auto sort = first;
-		auto prev = first;
+		auto sort = begin;
+		auto prev = begin;
 
-		while (++sort != last) {
+		while (++sort != end) {
 			if (*sort < *prev) { // Optimization for almost sorted lists
-				auto comp = first;
+				auto comp = begin;
 				auto next = sort;
 				++next;
 

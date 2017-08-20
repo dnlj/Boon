@@ -5,7 +5,6 @@
 * Replace all cases std\::equal with Boon::equal
 * Add emplace equivalent for DynamicArray
 * Update bubble_sort to use forward iterators
-* Rename first/last in sorting algorithms to begin/end for consistency
 
 # Maintenance
 * Create a readme
