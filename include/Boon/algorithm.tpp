@@ -84,4 +84,31 @@ namespace Boon {
 			--last;
 		}
 	}
+
+	template<class ForwardIt, class>
+	void insertion_sort(ForwardIt first, ForwardIt last) {
+		if (first == last) { return; }
+
+		auto sort = first;
+		auto prev = first;
+
+		while (++sort != last) {
+			if (*sort < *prev) { // Optimization for almost sorted lists
+				auto comp = first;
+				auto next = sort;
+				++next;
+
+				while (comp != next) {
+					if (*sort < *comp) {
+						using std::swap;
+						swap(*comp, *sort);
+					}
+
+					++comp;
+				}
+			}
+
+			++prev;
+		}
+	}
 }

@@ -108,6 +108,23 @@ namespace Boon {
 	>
 	void bubble_sort(BiIt first, BiIt last);
 
+	/**
+	 * @brief Sorts the elements in the range [@p first, @p last) using a insertion sort.
+	 * @tparam ForwardIt The forward iterator type.
+	 * @param[in] first The first element to sort.
+	 * @param[in] last One past the last element to sort.
+	 */
+	template<
+		class ForwardIt,
+		class = std::enable_if_t<
+			std::is_base_of_v<
+				std::forward_iterator_tag,
+				std::iterator_traits<ForwardIt>::iterator_category
+			>
+		>
+	>
+	void insertion_sort(ForwardIt first, ForwardIt last);
+
 }
 
 #include <Boon/algorithm.tpp>
