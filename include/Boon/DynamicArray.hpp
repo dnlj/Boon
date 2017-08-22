@@ -556,4 +556,4 @@ namespace Boon {
 		};
 }
 
-#include <Boon/DynamicArray.tpp>
+#include <Boon/DynamicArray.ipp>

@@ -153,4 +153,4 @@ namespace Boon {
 	InputIt linear_search(InputIt begin, InputIt end, const T& value);
 }
 
-#include <Boon/algorithm.tpp>
+#include <Boon/algorithm.ipp>
