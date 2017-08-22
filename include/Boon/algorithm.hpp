@@ -4,6 +4,9 @@
 #include <type_traits>
 #include <iterator>
 
+// Boon
+#include <Boon/type_traits.hpp>
+
 namespace Boon {
 	/**
 	 * @brief Gets @p first. @see the variadic version of Boon::min.
@@ -125,6 +128,29 @@ namespace Boon {
 	>
 	void insertion_sort(ForwardIt begin, ForwardIt end);
 
+	/**
+	 * @brief Finds @p value in the range [@p begin, @p end) using an linear search.
+	 * @tparam InputIt The input iterator type.
+	 * @tparam T The type of @p value.
+	 * @param[in] begin The beginning of the range of elements to search.
+	 * @param[in] end The end of the range of elements to search.
+	 * @param[in] value The value to search for.
+	 * @return An iterator to the first found element, or @p 
+	 */
+	template<
+		class InputIt,
+		class T,
+		class = std::enable_if_t<
+			std::is_base_of_v<
+				std::input_iterator_tag,
+				std::iterator_traits<InputIt>::iterator_category
+			>
+		>,
+		class = std::enable_if_t<
+			Boon::is_equal_comparable_v<T, std::iterator_traits<InputIt>::value_type>
+		>
+	>
+	InputIt linear_search(InputIt begin, InputIt end, const T& value);
 }
 
 #include <Boon/algorithm.tpp>

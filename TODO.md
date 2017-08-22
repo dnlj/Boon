@@ -22,3 +22,4 @@
 - [x] Insertion Sort
 
 # Search Algorithms
+- [x] Linear Search

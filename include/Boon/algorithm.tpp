@@ -113,4 +113,14 @@ namespace Boon {
 			++prev;
 		}
 	}
+
+	template<class InputIt, class T, class, class>
+	InputIt linear_search(InputIt begin, InputIt end, const T& value) {
+		while (begin != end) {
+			if (*begin == value) { break; }
+			++begin;
+		}
+
+		return begin;
+	}
 }
