@@ -1,3 +1,6 @@
+// STD
+#include <memory>
+
 namespace Boon {
 	template<class T>
 	inline constexpr const T& min(const T& first) {
@@ -112,6 +115,44 @@ namespace Boon {
 
 			++prev;
 		}
+	}
+
+	template<class ForwardIt1, class ForwardIt2, class ForwardIt3, class>
+	void merge_ranges(const ForwardIt1 begin1, const ForwardIt1 end1, const ForwardIt2 begin2, const ForwardIt2 end2, ForwardIt3 output) {
+		auto current1 = begin1;
+		auto current2 = begin2;
+
+		while (current1 != end1 && current2 != end2) {
+			if (*current1 < *current2) {
+				*output = std::move(*current1);
+				++current1;
+			} else {
+				*output = std::move(*current2);
+				++current2;
+			}
+			
+			++output;
+		}
+
+		Boon::move(current1, end1, output);
+		Boon::move(current2, end2, output);
+	}
+
+	template<class ForwardIt, class>
+	void merge_sort(ForwardIt begin, ForwardIt end) {
+		using value_type = std::iterator_traits<ForwardIt>::value_type;
+
+		auto size = std::distance(begin, end);
+		if (size < 2) { return; }
+
+		auto middle = std::next(begin, size / 2);
+		merge_sort(begin, middle);
+		merge_sort(middle, end);
+
+		auto merged = std::make_unique<value_type[]>(size);
+		merge_ranges(begin, middle, middle, end, merged.get());
+
+		Boon::move(merged.get(), merged.get() + size, begin);
 	}
 
 	template<class InputIt, class T, class, class>

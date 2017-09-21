@@ -129,6 +129,46 @@ namespace Boon {
 	void insertion_sort(ForwardIt begin, ForwardIt end);
 
 	/**
+	 * @brief Merges the two ranges specified by [\p begin1, \p end1) U [\p begin2, \p end2).
+	 * The merge is destructive to the input ranges (elements are moved, not copied).
+	 * @tparam ForwardIt1 The forward iterator type of the first range.
+	 * @tparam ForwardIt2 The forward iterator type of the second range.
+	 * @tparam ForwardIt3 The forward iterator type of the output range.
+	 * @param[in] begin1 The start of the first range.
+	 * @param[in] end1 The end of the first range.
+	 * @param[in] begin2 The start of the second range.
+	 * @param[in] end2 The end of the second range.
+	 * @param[out] output The start of the output range. The output range must be large enough to hold [\p begin1, \p end1) U [\p begin2, \p end2).
+	 */
+	template<
+		class ForwardIt1,
+		class ForwardIt2,
+		class ForwardIt3,
+		class = std::enable_if_t<
+			std::is_base_of_v<std::forward_iterator_tag, std::iterator_traits<ForwardIt1>::iterator_category>
+			&& 
+			std::is_base_of_v<std::forward_iterator_tag, std::iterator_traits<ForwardIt2>::iterator_category>
+			&&
+			std::is_base_of_v<std::forward_iterator_tag, std::iterator_traits<ForwardIt3>::iterator_category>
+		>
+	>
+	void merge_ranges(const ForwardIt1 begin1, const ForwardIt1 end1, const ForwardIt2 begin2, const ForwardIt2 end2, ForwardIt3 output);
+
+	/**
+	 * @brief Sorts the elements in the range [@p begin, @p end) using an merge sort.
+	 * @tparam ForwardIt The forward iterator type.
+	 * @param[in] begin The beginning of the range of elements to sort.
+	 * @param[in] end The end of the range of elements to sort.
+	 */
+	template<
+		class ForwardIt,
+		class = std::enable_if_t<
+			std::is_base_of_v<std::forward_iterator_tag, std::iterator_traits<ForwardIt>::iterator_category>
+		>
+	>
+	void merge_sort(ForwardIt begin, ForwardIt end);
+
+	/**
 	 * @brief Finds @p value in the range [@p begin, @p end) using an linear search.
 	 * @tparam InputIt The input iterator type.
 	 * @tparam T The type of @p value.
