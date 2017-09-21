@@ -103,10 +103,7 @@ namespace Boon {
 	template<
 		class ForwardIt,
 		class = std::enable_if_t<
-			std::is_base_of_v<
-				std::forward_iterator_tag,
-				std::iterator_traits<ForwardIt>::iterator_category
-			>
+			std::is_base_of_v<std::forward_iterator_tag, std::iterator_traits<ForwardIt>::iterator_category>
 		>
 	>
 	void bubble_sort(ForwardIt begin, ForwardIt end);
@@ -120,10 +117,7 @@ namespace Boon {
 	template<
 		class ForwardIt,
 		class = std::enable_if_t<
-			std::is_base_of_v<
-				std::forward_iterator_tag,
-				std::iterator_traits<ForwardIt>::iterator_category
-			>
+			std::is_base_of_v<std::forward_iterator_tag, std::iterator_traits<ForwardIt>::iterator_category>
 		>
 	>
 	void insertion_sort(ForwardIt begin, ForwardIt end);
@@ -181,12 +175,8 @@ namespace Boon {
 		class InputIt,
 		class T,
 		class = std::enable_if_t<
-			std::is_base_of_v<
-				std::input_iterator_tag,
-				std::iterator_traits<InputIt>::iterator_category
-			>
-		>,
-		class = std::enable_if_t<
+			std::is_base_of_v<std::input_iterator_tag, std::iterator_traits<InputIt>::iterator_category>
+			&&
 			Boon::is_equal_comparable_v<T, std::iterator_traits<InputIt>::value_type>
 		>
 	>

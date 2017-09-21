@@ -155,7 +155,7 @@ namespace Boon {
 		Boon::move(merged.get(), merged.get() + size, begin);
 	}
 
-	template<class InputIt, class T, class, class>
+	template<class InputIt, class T, class>
 	InputIt linear_search(InputIt begin, InputIt end, const T& value) {
 		while (begin != end) {
 			if (*begin == value) { break; }
