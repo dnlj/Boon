@@ -274,7 +274,7 @@ namespace Boon {
 	}
 
 	template<class T>
-	void DynamicArray<T>::resize(size_t size, const T& value = T{}) {
+	void DynamicArray<T>::resize(size_t size, const T& value) {
 		// Make sure we have enough capacity
 		reserve(size);
 
